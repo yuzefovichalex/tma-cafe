@@ -1,0 +1,17 @@
+[
+    {
+        "image": "images/image-hamburger-1.jpg",
+        "name": "Hamburger",
+        "description": "A hamburger is an extremely popular sandwich consisting of one or more meat patties placed in a bun or a bread roll."
+    },
+    {
+        "image": "images/image-pepperoni.jpg",
+        "name": "Pepperoni Pizza",
+        "description": "Pepperoni pizza is an American pizza variety which includes one of the country's most beloved toppings."
+    },
+    {
+        "image": "images/image-carbonara.jpg",
+        "name": "Carbonara Pasta",
+        "description": "The carbonara we know today is prepared by simply tossing spaghetti with guanciale (cured pork jowl), egg yolks, and Pecorino Romano cheese."
+    }
+]
