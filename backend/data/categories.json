@@ -1,25 +1,30 @@
 [
     {
+        "id": "burgers",
         "icon": "icons/icon-burger.svg",
         "name": "Burgers",
         "backgroundColor": "#FEBEAD"
     },
     {
+        "id": "pizza",
         "icon": "icons/icon-pizza.svg",
         "name": "Pizza",
         "backgroundColor": "#D3FF75"
     },
     {
+        "id": "pasta",
         "icon": "icons/icon-pasta.svg",
         "name": "Pasta",
         "backgroundColor": "#FFD075"
     },
     {
+        "id": "ice-cream",
         "icon": "icons/icon-icecream.svg",
         "name": "Ice Cream",
         "backgroundColor": "#D2C9FE"
     },
     {
+        "id": "coffee",
         "icon": "icons/icon-coffee.svg",
         "name": "Coffee",
         "backgroundColor": "#FDBE93"

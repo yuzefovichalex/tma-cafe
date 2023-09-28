@@ -1,0 +1,26 @@
+[
+    {
+        "id": "pasta-1",
+        "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Spaghetti alla Carbonara",
+        "description": "Spaghetti in a creamy sauce made with egg, prosciutto, sautéed onions, Parmesan cheese and black pepper."
+    },
+    {
+        "id": "pasta-2",
+        "image": "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Penne Terra E Mare",
+        "description": "Penne sautéed with clams, mussels, scallops, shrimp, mushrooms, peas and diced tomatoes."
+    },
+    {
+        "id": "pasta-3",
+        "image": "https://images.unsplash.com/photo-1579684947550-22e945225d9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Spaghetti Alla Puttanesca",
+        "description": "Spaghetti in a diced tomato, anchovies, capers, Kalamata olives and red pepper sauce."
+    },
+    {
+        "id": "pasta-4",
+        "image": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Linguime ai frutti di Mare",
+        "description": "Linguine, tossed with freshly sautéed seafood in a white wine or marinara sauce."
+    }
+]

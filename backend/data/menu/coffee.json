@@ -1,0 +1,26 @@
+[
+    {
+        "id": "coffee-1",
+        "image": "https://images.unsplash.com/photo-1481455473976-c280ae7c10f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Snow Hot Chocolate",
+        "description": "Rich chocolate with steamed milk and a small layer of foam."
+    },
+    {
+        "id": "coffee-2",
+        "image": "https://images.unsplash.com/photo-1479894127662-a987d1e38f82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Chai Latte",
+        "description": "Chai syrup with steamed milk and a small layer of foam."
+    },
+    {
+        "id": "coffee-3",
+        "image": "https://images.unsplash.com/photo-1489217085007-bfc28b5c6f36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Cappuccino",
+        "description": "A double shot of espresso with equal parts steamed milk and foam."
+    },
+    {
+        "id": "coffee-4",
+        "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
+        "name": "Iced Coffee",
+        "description": "Fresh espresso served with milk, vanilla ice-cream and fresh whipped cream."
+    }
+]

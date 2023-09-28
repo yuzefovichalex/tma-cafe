@@ -113,6 +113,14 @@ body {
     display: none;
 }
 
+.cafe-section-vertical {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
 .cafe-category-container {
     min-width: 56px;
     height: 56px;
@@ -138,13 +146,15 @@ body {
 }
 
 .cafe-item-container {
-    width: 168px;
-    max-width: 168px;
+    max-width: 200px;
+    width: calc((100vw - 16px * 3) / 2);
 }
 
 .cafe-item-image {
-    width: 168px;
-    height: 126px;
+    max-width: 224px;
+    max-height: 168px;
+    width: calc((100vw - 16px * 3) / 2);
+    height: calc((100vw - 16px * 3) / 2 * 3 / 4);
     object-fit: cover;
     border-radius: 16px;
 }

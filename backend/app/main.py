@@ -34,11 +34,11 @@ async def categories():
         return json_data('data/categories.json')
     except FileNotFoundError:
         raise HTTPException(status_code=500, detail='Could not find categories data.')
-    
-@app.get('/api/menu/popular')
-async def menu_popular():
+
+@app.get('/api/menu/{category_id}')
+async def menu(category_id: str):
     try:
-        return json_data('data/menu/popular.json')
+        return json_data(f'data/menu/{category_id}.json')
     except FileNotFoundError:
         raise HTTPException(status_code=500, detail='Could not popular menu section data.')
 
