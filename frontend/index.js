@@ -1,22 +1,21 @@
-const baseApiUrl = 'http://127.0.0.1:8000/api'
-
-$.ajaxSetup({
-    beforeSend: (xhr, options) => options.url = baseApiUrl + options.url
-})
+import { get } from "./js/requests.js";
 
 $(window).on('load', function () {
-    //setTimeout(loadCafeInfo, 3000);
     loadCafeInfo();
     loadCategories();
     loadPopularMenu();
 });
 
 function loadCafeInfo() {
-    $.ajax({
-        dataType: "json",
-        url: "/info",
-        success: cafeInfo => fillCafeInfo(cafeInfo)
-    });
+    get('/info', fillCafeInfo);
+}
+
+function loadCategories() {
+    get('/categories', fillCategories)
+}
+
+function loadPopularMenu() {
+    get('/menu/popular', fillPopularMenu);
 }
 
 function fillCafeInfo(cafeInfo) {
@@ -29,14 +28,6 @@ function fillCafeInfo(cafeInfo) {
     filledCafeInfoTemplate.find('#cafe-status').text(cafeInfo.status);
     $('#cafe-info').empty();
     $('#cafe-info').append(filledCafeInfoTemplate);
-}
-
-function loadCategories() {
-    $.ajax({
-        dataType: "json",
-        url: "/categories",
-        success: categories => fillCategories(categories)
-    });
 }
 
 function fillCategories(categories) {
@@ -53,14 +44,6 @@ function fillCategories(categories) {
             template.find('#cafe-category-name').text(cafeCategory.name);
         }
     )
-}
-
-function loadPopularMenu() {
-    $.ajax({
-        url: '/menu/popular/',
-        dataType: "json",
-        success: popularMenu => fillPopularMenu(popularMenu)
-    });
 }
 
 function fillPopularMenu(popularMenu) {
