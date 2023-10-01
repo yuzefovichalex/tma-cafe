@@ -2,13 +2,40 @@ body {
     margin: 0;
 }
 
+h1 {
+    width: fit-content;
+    min-width: 45%;
+    min-height: 1em;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #121212;
+    border-radius: 8px;
+    margin: 0;
+    display: block;
+}
+
+p {
+    width: fit-content;
+    min-width: 75%;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    color: #121212;
+    opacity: 0.36;
+    border-radius: 8px;
+}
+
 .cover {
     width: 100%;
-    height: calc(100vw * 9 / 16);
+    height: calc(100vw * 3 / 4);
     object-fit: cover;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
 }
+
+
+
+/* Cafe info */
 
 .cafe-info-container {
     position: relative;
@@ -23,27 +50,9 @@ body {
     padding: 24px;
 }
 
-.cafe-name {
-    width: fit-content;
-    min-width: 45%;
-    min-height: 1em;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 500;
-    font-size: 24px;
-    color: #121212;
-    border-radius: 8px;
-}
-
 .cafe-kitchen-categories {
-    width: fit-content;
-    min-width: 75%;
     min-height: 1em;
     margin-top: 2px;
-    font-family: 'Rubik', sans-serif;
-    font-size: 14px;
-    color: #121212;
-    opacity: 0.36;
-    border-radius: 8px;
 }
 
 .cafe-parameters-container {
@@ -83,6 +92,10 @@ body {
     color: #FFF;
 }
 
+
+
+/* Sections (e.g. categories or popular */
+
 .cafe-section-container {
     margin-top: 24px;
 }
@@ -121,6 +134,10 @@ body {
     gap: 16px;
 }
 
+
+
+/* Category item */
+
 .cafe-category-container {
     min-width: 56px;
     height: 56px;
@@ -144,6 +161,10 @@ body {
     color: #121212;
     opacity: 0.72;
 }
+
+
+
+/* Cafe item*/
 
 .cafe-item-container {
     max-width: 200px;
@@ -179,6 +200,18 @@ body {
     color: #121212;
     border-radius: 8px;
     opacity: 0.36;
+}
+
+
+
+/* Cafe item details */
+
+.cafe-item-details-name {
+    margin: 16px 16px 0 16px;
+}
+
+.cafe-item-details-description {
+    margin: 16px 16px 0 16px;
 }
 
 .shimmer {

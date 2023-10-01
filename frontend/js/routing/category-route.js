@@ -1,4 +1,5 @@
 import { Route } from "./route.js";
+import { navigateTo } from "./router.js";
 import { get } from "../requests/requests.js";
 import { replaceShimmerContent } from "../utils/dom.js";
 
@@ -31,6 +32,10 @@ export class CategoryRoute extends Route {
                 template.find('#cafe-item-image').attr('src', cafeItem.image);
                 template.find('#cafe-item-name').text(cafeItem.name);
                 template.find('#cafe-item-description').text(cafeItem.description);
+                template.on('click', () => {
+                    const params = JSON.stringify({'id': cafeItem.id});
+                    navigateTo('details', params);
+                });
             }
         )
     }

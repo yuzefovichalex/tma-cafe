@@ -70,6 +70,10 @@ export class MainRoute extends Route {
                 template.find('#cafe-item-image').attr('src', cafeItem.image);
                 template.find('#cafe-item-name').text(cafeItem.name);
                 template.find('#cafe-item-description').text(cafeItem.description);
+                template.on('click', () => {
+                    const params = JSON.stringify({'id': cafeItem.id});
+                    navigateTo('details', params);
+                });
             }
         )
     }
