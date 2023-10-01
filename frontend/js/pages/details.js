@@ -1,7 +1,7 @@
-import { Route } from "./route.js"
+import { Route } from "../routing/route.js";
 import { get } from "../requests/requests.js";
 
-export class DetailsRoute extends Route {
+export class DetailsPage extends Route {
     constructor() {
         super('details', '/pages/details.html')
     }

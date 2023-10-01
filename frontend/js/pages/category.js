@@ -1,9 +1,9 @@
-import { Route } from "./route.js";
-import { navigateTo } from "./router.js";
+import { Route } from "../routing/route.js";
+import { navigateTo } from "../routing/router.js";
 import { get } from "../requests/requests.js";
 import { replaceShimmerContent } from "../utils/dom.js";
 
-export class CategoryRoute extends Route {
+export class CategoryPage extends Route {
     constructor() {
         super('category', '/pages/category.html')
     }

@@ -1,11 +1,11 @@
-import { MainRoute } from "./main-route.js";
-import { CategoryRoute } from "./category-route.js";
-import { DetailsRoute } from "./details-route.js";
+import { MainPage } from "../pages/main.js";
+import { CategoryPage } from "../pages/category.js";
+import { DetailsPage } from "../pages/details.js";
 
 const routes = [
-    new MainRoute(),
-    new CategoryRoute(),
-    new DetailsRoute()
+    new MainPage(),
+    new CategoryPage(),
+    new DetailsPage()
 ]
 
 export const navigateTo = (dest, params) => {
