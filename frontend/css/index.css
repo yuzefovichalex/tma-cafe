@@ -211,6 +211,8 @@ p {
 }
 
 .cafe-item-details-description {
+    min-width: calc(100% - 32px);
+    min-height: 3em;
     margin: 16px 16px 0 16px;
 }
 

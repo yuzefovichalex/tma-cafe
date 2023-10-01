@@ -1,5 +1,6 @@
 import { Route } from "../routing/route.js";
 import { get } from "../requests/requests.js";
+import { loadImage } from "../utils/dom.js";
 
 export class DetailsPage extends Route {
     constructor() {
@@ -20,9 +21,15 @@ export class DetailsPage extends Route {
     }
 
     #fillDetails(menuItem) {
-        $('#cafe-item-details-image').attr('src', menuItem.image);
-        $('#cafe-item-details-name').text(menuItem.name);
-        $('#cafe-item-details-description').text(menuItem.description);
+        loadImage('#cafe-item-details-image', menuItem.image);
+
+        const name = $('#cafe-item-details-name');
+        name.removeClass('shimmer');
+        name.text(menuItem.name);
+
+        const description = $('#cafe-item-details-description');
+        description.removeClass('shimmer');
+        description.text(menuItem.description);
     }
 
 }
