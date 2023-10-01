@@ -1,7 +1,7 @@
 import { Route } from "../routing/route.js";
 import { navigateTo } from "../routing/router.js";
 import { get } from "../requests/requests.js";
-import { replaceShimmerContent } from "../utils/dom.js";
+import { loadImage, replaceShimmerContent } from "../utils/dom.js";
 
 export class MainPage extends Route {
     constructor() {
@@ -27,8 +27,10 @@ export class MainPage extends Route {
     }
     
     #fillCafeInfo(cafeInfo) {
-        var cafeInfoTemplate = $('#cafe-info-template').html();
-        var filledCafeInfoTemplate = $(cafeInfoTemplate);
+        loadImage('#cafe-cover', cafeInfo.coverImage)
+        
+        const cafeInfoTemplate = $('#cafe-info-template').html();
+        const filledCafeInfoTemplate = $(cafeInfoTemplate);
         filledCafeInfoTemplate.find('#cafe-name').text(cafeInfo.name);
         filledCafeInfoTemplate.find('#cafe-kitchen-categories').text(cafeInfo.kitchenCategories);
         filledCafeInfoTemplate.find('#cafe-rating').text(cafeInfo.rating);
