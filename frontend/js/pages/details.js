@@ -21,7 +21,7 @@ export class DetailsPage extends Route {
             };
             return {
                 text: 'Add to Cart',
-                onClick: () => post('/order', data, (result) => {
+                onClick: () => post('/order', JSON.stringify(data), (result) => {
                     TelegramSDK.openInvoice(result.invoiceUrl);
                 })
             }
