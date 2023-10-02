@@ -1,6 +1,7 @@
 import { Route } from "../routing/route.js";
 import { navigateTo } from "../routing/router.js";
 import { get } from "../requests/requests.js";
+import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage, replaceShimmerContent } from "../utils/dom.js";
 
 export class MainPage extends Route {
@@ -8,7 +9,9 @@ export class MainPage extends Route {
         super('root', '/pages/main.html')
     }
 
-    loadData(params) {
+    load(params) {
+        TelegramSDK.hideMainButton();
+        
         this.#loadCafeInfo()
         this.#loadCategories();
         this.#loadPopularMenu();
@@ -28,7 +31,7 @@ export class MainPage extends Route {
     
     #fillCafeInfo(cafeInfo) {
         loadImage('#cafe-cover', cafeInfo.coverImage)
-        
+
         const cafeInfoTemplate = $('#cafe-info-template').html();
         const filledCafeInfoTemplate = $(cafeInfoTemplate);
         filledCafeInfoTemplate.find('#cafe-name').text(cafeInfo.name);

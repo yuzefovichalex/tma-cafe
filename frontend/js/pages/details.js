@@ -4,37 +4,14 @@ import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 
 export class DetailsPage extends Route {
-    cafeItemId
-
     constructor() {
         super('details', '/pages/details.html')
     }
 
-    getMainButtonParams() {
-        if (this.cafeItemId != null) {
-            const data = {
-                'items': [
-                    {
-                        'id': this.cafeItemId
-                    }
-                ]
-            };
-            return {
-                text: 'Add to Cart',
-                onClick: () => post('/order', data, (result) => {
-                    TelegramSDK.openInvoice(result.invoiceUrl);
-                })
-            }
-        } else {
-            return null;
-        }
-    }
-
-    loadData(params) {
+    load(params) {
         if (params != null) {
             const parsedParams = JSON.parse(params);
-            this.cafeItemId = parsedParams.id;
-            this.#loadDetails(this.cafeItemId);
+            this.#loadDetails(parsedParams.id);
         } else {
             console.log('Params must not be null and must contain category ID.')
         }
@@ -54,6 +31,20 @@ export class DetailsPage extends Route {
         const description = $('#cafe-item-details-description');
         description.removeClass('shimmer');
         description.text(menuItem.description);
+
+        const data = {
+            'items': [
+                {
+                    'id': menuItem.id
+                }
+            ]
+        };
+        TelegramSDK.showMainButton(
+            'Add to Cart',
+            () => post('/order', JSON.stringify(data), (result) => {
+                TelegramSDK.openInvoice(result.invoiceUrl);
+            })
+        );
     }
 
 }

@@ -7,9 +7,12 @@ export function get(endpoint, onSuccess) {
 }
 
 export function post(endpoint, data, onSuccess) {
-    $.post({
+    $.ajax({
+        type: 'POST',
         url: '/api' + endpoint,
         data: data,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         success: result => onSuccess(result)
     })
 }
