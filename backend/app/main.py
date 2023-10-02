@@ -1,19 +1,39 @@
+import asyncio
 import json
 import os
 from aiogram import Bot
-from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types.labeled_price import LabeledPrice
+from contextlib import asynccontextmanager
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from .models.order import Order
 
+load_dotenv()
+
 BOT_TOKEN=os.getenv('BOT_TOKEN')
 PAYMENT_PROVIDER_TOKEN=os.getenv('PAYMENT_PROVIDER_TOKEN')
 
-bot = Bot(token=BOT_TOKEN)
-storage = MemoryStorage()
+_bot = None
 
-app = FastAPI()
+async def get_bot():
+    global _bot
+    lock = asyncio.Lock()
+    await lock.acquire()
+    if _bot is None:
+        _bot = Bot(BOT_TOKEN)
+    lock.release()
+    return _bot
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print('Server started')
+    yield
+    bot = await get_bot()
+    await bot.session.close()
+    print('Server stopped')
+
+app = FastAPI(lifespan=lifespan)
 
 origins = [
     'http://localhost:8888'
@@ -75,6 +95,7 @@ async def create_order(order: Order):
         )
         labeled_prices.append(labeled_price)
 
+    bot = await get_bot()
     invoice_url = await bot.create_invoice_link(
         title='Order #1',
         description='Great choice! Last steps and we will get to cooking ;)',
