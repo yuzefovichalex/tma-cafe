@@ -1,6 +1,7 @@
 import { MainPage } from "../pages/main.js";
 import { CategoryPage } from "../pages/category.js";
 import { DetailsPage } from "../pages/details.js";
+import { TelegramSDK } from "../telegram/telegram.js";
 
 const routes = [
     new MainPage(),
@@ -30,6 +31,19 @@ export const handleLocation = () => {
         }
         const route = routes.find((route) => dest === route.dest);
         $('#content').load(route.contentPath, () => route.loadData(loadParams));
+
+        const mainButtonParams = route.getMainButtonParams();
+        if (mainButtonParams != null) {
+            TelegramSDK.showMainButton(mainButtonParams.text, mainButtonParams.onClick);
+        } else {
+            TelegramSDK.hideBackButton();
+        }
+
+        if (route.dest !== 'root') {
+            TelegramSDK.showBackButton(() => history.back());
+        } else {
+            TelegramSDK.hideBackButton();
+        }
     }
 };
 

@@ -1,0 +1,30 @@
+export class TelegramSDK {
+
+    static showMainButton(text, onClick) {
+        const mainButton = Telegram.WebApp.MainButton;
+        mainButton.setParams({
+            text: text,
+            is_visible: true
+        });
+        mainButton.onClick(onClick);
+    }
+
+    static hideMainButton() {
+        Telegram.WebApp.MainButton.hide();
+    }
+
+    static showBackButton(onClick) {
+        const backButton = Telegram.WebApp.BackButton.show();
+        backButton.show();
+        backButton.onClick(onClick);
+    }
+
+    static hideBackButton() {
+        Telegram.WebApp.BackButton.hide();
+    }
+
+    static openInvoice(url, callback) {
+        Telegram.WebApp.openInvoice(url, callback);
+    }
+
+}

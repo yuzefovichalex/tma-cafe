@@ -1,7 +1,17 @@
 import json
 import os
+from aiogram import Bot
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types.labeled_price import LabeledPrice
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from .models.order import Order
+
+BOT_TOKEN=os.getenv('BOT_TOKEN')
+PAYMENT_PROVIDER_TOKEN=os.getenv('PAYMENT_PROVIDER_TOKEN')
+
+bot = Bot(token=BOT_TOKEN)
+storage = MemoryStorage()
 
 app = FastAPI()
 
@@ -54,6 +64,27 @@ async def menu_item_details(menu_item_id: str):
         raise HTTPException(status_code=404, detail=f'Could not menu item data with `{menu_item_id}` ID.')
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f'Could not menu item data with `{menu_item_id}` ID.')
+
+@app.post('/api/order')
+async def create_order(order: Order):
+    labeled_prices = []
+    for order_item in order.items:
+        labeled_price = LabeledPrice(
+            label='Test product',
+            amount=200
+        )
+        labeled_prices.append(labeled_price)
+
+    invoice_url = await bot.create_invoice_link(
+        title='Order #1',
+        description='Great choice! Last steps and we will get to cooking ;)',
+        payload='orderID',
+        provider_token=PAYMENT_PROVIDER_TOKEN,
+        currency='USD',
+        prices=labeled_prices
+    )
+
+    return { 'invoiceUrl': invoice_url }
 
 def json_data(data_file_path: str):
     if os.path.exists(data_file_path):

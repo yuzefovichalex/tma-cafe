@@ -1,16 +1,40 @@
 import { Route } from "../routing/route.js";
-import { get } from "../requests/requests.js";
+import { get, post } from "../requests/requests.js";
+import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 
 export class DetailsPage extends Route {
+    cafeItemId
+
     constructor() {
         super('details', '/pages/details.html')
+    }
+
+    getMainButtonParams() {
+        if (this.cafeItemId != null) {
+            const data = {
+                'items': [
+                    {
+                        'id': this.cafeItemId
+                    }
+                ]
+            };
+            return {
+                text: 'Add to Cart',
+                onClick: () => post('/order', data, (result) => {
+                    TelegramSDK.openInvoice(result.invoiceUrl);
+                })
+            }
+        } else {
+            return null;
+        }
     }
 
     loadData(params) {
         if (params != null) {
             const parsedParams = JSON.parse(params);
-            this.#loadDetails(parsedParams.id);
+            this.cafeItemId = parsedParams.id;
+            this.#loadDetails(this.cafeItemId);
         } else {
             console.log('Params must not be null and must contain category ID.')
         }
