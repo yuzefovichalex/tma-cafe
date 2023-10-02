@@ -4,8 +4,6 @@ import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 
 export class DetailsPage extends Route {
-    cafeItemId
-
     constructor() {
         super('details', '/pages/details.html')
     }
@@ -13,8 +11,7 @@ export class DetailsPage extends Route {
     load(params) {
         if (params != null) {
             const parsedParams = JSON.parse(params);
-            this.cafeItemId = parsedParams.id;
-            this.#loadDetails(this.cafeItemId);
+            this.#loadDetails(parsedParams.id);
         } else {
             console.log('Params must not be null and must contain category ID.')
         }
@@ -38,7 +35,7 @@ export class DetailsPage extends Route {
         const data = {
             'items': [
                 {
-                    'id': this.cafeItemId
+                    'id': menuItem.id
                 }
             ]
         };
