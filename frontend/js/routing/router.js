@@ -30,14 +30,7 @@ export const handleLocation = () => {
             var loadParams = decodeURIComponent(encodedLoadParams);
         }
         const route = routes.find((route) => dest === route.dest);
-        $('#content').load(route.contentPath, () => route.loadData(loadParams));
-
-        const mainButtonParams = route.getMainButtonParams();
-        if (mainButtonParams != null) {
-            TelegramSDK.showMainButton(mainButtonParams.text, mainButtonParams.onClick);
-        } else {
-            TelegramSDK.hideBackButton();
-        }
+        $('#content').load(route.contentPath, () => route.load(loadParams));
 
         if (route.dest !== 'root') {
             TelegramSDK.showBackButton(() => history.back());

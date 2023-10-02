@@ -1,6 +1,7 @@
 import { Route } from "../routing/route.js";
 import { navigateTo } from "../routing/router.js";
 import { get } from "../requests/requests.js";
+import { TelegramSDK } from "../telegram/telegram.js";
 import { replaceShimmerContent } from "../utils/dom.js";
 
 export class CategoryPage extends Route {
@@ -8,7 +9,9 @@ export class CategoryPage extends Route {
         super('category', '/pages/category.html')
     }
 
-    loadData(params) {
+    load(params) {
+        TelegramSDK.hideMainButton();
+
         if (params != null) {
             const parsedParams = JSON.parse(params);
             this.#loadMenu(parsedParams.id);

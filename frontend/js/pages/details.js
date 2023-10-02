@@ -10,27 +10,7 @@ export class DetailsPage extends Route {
         super('details', '/pages/details.html')
     }
 
-    getMainButtonParams() {
-        if (this.cafeItemId != null) {
-            const data = {
-                'items': [
-                    {
-                        'id': this.cafeItemId
-                    }
-                ]
-            };
-            return {
-                text: 'Add to Cart',
-                onClick: () => post('/order', JSON.stringify(data), (result) => {
-                    TelegramSDK.openInvoice(result.invoiceUrl);
-                })
-            }
-        } else {
-            return null;
-        }
-    }
-
-    loadData(params) {
+    load(params) {
         if (params != null) {
             const parsedParams = JSON.parse(params);
             this.cafeItemId = parsedParams.id;
@@ -54,6 +34,20 @@ export class DetailsPage extends Route {
         const description = $('#cafe-item-details-description');
         description.removeClass('shimmer');
         description.text(menuItem.description);
+
+        const data = {
+            'items': [
+                {
+                    'id': this.cafeItemId
+                }
+            ]
+        };
+        TelegramSDK.showMainButton(
+            'Add to Cart',
+            () => post('/order', JSON.stringify(data), (result) => {
+                TelegramSDK.openInvoice(result.invoiceUrl);
+            })
+        );
     }
 
 }

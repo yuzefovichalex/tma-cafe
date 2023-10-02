@@ -4,9 +4,5 @@ export class Route {
         this.contentPath = contentPath;
     }
 
-    getMainButtonParams() { 
-        return null;
-    }
-
-    loadData(params) { }
+    load(params) { }
 }
