@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 from aiogram import Bot
 from aiogram.types.labeled_price import LabeledPrice
@@ -14,6 +15,8 @@ load_dotenv()
 BOT_TOKEN=os.getenv('BOT_TOKEN')
 PAYMENT_PROVIDER_TOKEN=os.getenv('PAYMENT_PROVIDER_TOKEN')
 
+logging.basicConfig(level=logging.INFO)
+
 _bot = None
 
 async def get_bot():
@@ -27,11 +30,11 @@ async def get_bot():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print('Server started')
+    logging.info('Server started')
     yield
     bot = await get_bot()
     await bot.session.close()
-    print('Server stopped')
+    logging.info('Server stopped')
 
 app = FastAPI(lifespan=lifespan)
 
