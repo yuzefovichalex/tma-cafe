@@ -1,16 +1,20 @@
 export class TelegramSDK {
 
     static showMainButton(text, onClick) {
-        const mainButton = Telegram.WebApp.MainButton;
-        mainButton.setParams({
-            text: text,
-            is_visible: true
-        });
-        mainButton.onClick(onClick);
+        $('#telegram-button').text(text);
+        $('#telegram-button').off('click').on('click', onClick);
+        $('#telegram-button').show();
+        // const mainButton = Telegram.WebApp.MainButton;
+        // mainButton.setParams({
+        //     text: text,
+        //     is_visible: true
+        // });
+        // mainButton.onClick(onClick);
     }
 
     static hideMainButton() {
-        Telegram.WebApp.MainButton.hide();
+        $('#telegram-button').hide();
+        //Telegram.WebApp.MainButton.hide();
     }
 
     static showBackButton(onClick) {

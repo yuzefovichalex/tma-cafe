@@ -167,7 +167,7 @@ p {
 /* Cafe item*/
 
 .cafe-item-container {
-    max-width: 200px;
+    max-width: 224px;
     width: calc((100vw - 16px * 3) / 2);
 }
 
@@ -215,6 +215,35 @@ p {
     min-height: 3em;
     margin: 16px 16px 0 16px;
 }
+
+
+
+/* Cart item */
+
+.cart-item-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.cart-item-image {
+
+}
+
+.cart-item-info-container {
+
+}
+
+.cart-item-name {
+
+}
+
+.cart-item-cost {
+
+}
+
+
+
+/* Common (effect, animations, etc.) */
 
 .shimmer {
     animation-duration: 2.2s;

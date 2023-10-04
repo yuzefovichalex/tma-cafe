@@ -2,11 +2,13 @@ import { MainPage } from "../pages/main.js";
 import { CategoryPage } from "../pages/category.js";
 import { DetailsPage } from "../pages/details.js";
 import { TelegramSDK } from "../telegram/telegram.js";
+import { CartPage } from "../pages/cart.js";
 
 const routes = [
     new MainPage(),
     new CategoryPage(),
-    new DetailsPage()
+    new DetailsPage(),
+    new CartPage()
 ]
 
 export const navigateTo = (dest, params) => {

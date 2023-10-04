@@ -3,6 +3,7 @@ import { navigateTo } from "../routing/router.js";
 import { get } from "../requests/requests.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage, replaceShimmerContent } from "../utils/dom.js";
+import { Cart } from "../cart/cart.js";
 
 export class MainPage extends Route {
     constructor() {
@@ -10,7 +11,15 @@ export class MainPage extends Route {
     }
 
     load(params) {
-        TelegramSDK.hideMainButton();
+        const portionCount = Cart.getPortionCount()
+        if (portionCount > 0) {
+            TelegramSDK.showMainButton(
+                `Go to Cart (${portionCount})`,
+                () => { }
+            )
+        } else {
+            TelegramSDK.hideMainButton();
+        }
         
         this.#loadCafeInfo()
         this.#loadCategories();

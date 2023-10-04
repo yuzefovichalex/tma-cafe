@@ -2,6 +2,7 @@ import { Route } from "../routing/route.js";
 import { get, post } from "../requests/requests.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
+import { Cart } from "../cart/cart.js";
 
 export class DetailsPage extends Route {
     constructor() {
@@ -41,9 +42,10 @@ export class DetailsPage extends Route {
         };
         TelegramSDK.showMainButton(
             'Add to Cart',
-            () => post('/order', JSON.stringify(data), (result) => {
-                TelegramSDK.openInvoice(result.invoiceUrl);
-            })
+            () => Cart.addItem(menuItem, 1)
+            // () => post('/order', JSON.stringify(data), (result) => {
+            //     TelegramSDK.openInvoice(result.invoiceUrl);
+            // })
         );
     }
 
