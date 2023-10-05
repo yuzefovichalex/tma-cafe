@@ -22,13 +22,12 @@ export function fillContainer(selector, elements) {
     elements.forEach(el => container.append(el));
 }
 
-export function loadImage(imageSelector, imageUrl) {
-    const image = $(imageSelector);
-    if (image != null) {
-        if (!image.hasClass('shimmer')) {
-            image.addClass('shimmer');
+export function loadImage(imageElement, imageUrl) {
+    if (imageElement != null) {
+        if (!imageElement.hasClass('shimmer')) {
+            imageElement.addClass('shimmer');
         }
-        image.attr('src', imageUrl);
-        image.on('load', () => image.removeClass('shimmer'));
+        imageElement.attr('src', imageUrl);
+        imageElement.on('load', () => imageElement.removeClass('shimmer'));
     }
 }

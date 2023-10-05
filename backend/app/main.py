@@ -51,12 +51,12 @@ def menu_item_details(menu_item_id: str):
 
 @app.route('/order', methods=['POST'])
 def create_order():
-    order = request.get_json()
+    order_items = request.get_json()
 
     labeled_prices = []
-    for order_item in order['items']:
+    for order_item in order_items:
         labeled_price = LabeledPrice(
-            label='Test product',
+            label=f'{order_item["cafeItem"]["name"]} x{order_item["quantity"]}',
             amount=200
         )
         labeled_prices.append(labeled_price)

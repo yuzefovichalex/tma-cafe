@@ -1,12 +1,18 @@
 <section>
-
+    <div id="cart-items"></div>
 
     <template id="cart-item-template">
         <div class="cart-item-container">
             <img id="cart-item-image" class="cart-item-image"/>
             <div class="cart-item-info-container">
-                <div id="cart-item-name" class="cart-item-name"></div>
-                <div id="cart-item-cost" class="cart-item-cost"></div>
+                <h6 id="cart-item-name" class="cart-item-name"></h6>
+                <p id="cart-item-description" class="small cart-item-description">Small</p>
+                <div id="cart-item-cost" class="cart-item-cost">$2.00</div>
+            </div>
+            <div class="cart-item-quantity-container">
+                <span id="cart-item-quantity-decrement" class="material-symbols-rounded">remove</span>
+                <div id="cart-item-quantity" class="cart-item-quantity">1</div>
+                <span id="cart-item-quantity-increment" class="material-symbols-rounded">add</span>
             </div>
         </div>
     </template>

@@ -15,7 +15,7 @@ export class MainPage extends Route {
         if (portionCount > 0) {
             TelegramSDK.showMainButton(
                 `Go to Cart (${portionCount})`,
-                () => { }
+                () => navigateTo('cart')
             )
         } else {
             TelegramSDK.hideMainButton();
@@ -39,7 +39,7 @@ export class MainPage extends Route {
     }
     
     #fillCafeInfo(cafeInfo) {
-        loadImage('#cafe-cover', cafeInfo.coverImage)
+        loadImage($('#cafe-cover'), cafeInfo.coverImage)
 
         const cafeInfoTemplate = $('#cafe-info-template').html();
         const filledCafeInfoTemplate = $(cafeInfoTemplate);

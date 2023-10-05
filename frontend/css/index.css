@@ -6,23 +6,41 @@ h1 {
     width: fit-content;
     min-width: 45%;
     min-height: 1em;
+    margin: 0;
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 24px;
     color: #121212;
     border-radius: 8px;
-    margin: 0;
     display: block;
+}
+
+h6 {
+    min-height: 1em;
+    margin-top: 8px;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #121212;
+    border-radius: 8px;
+    opacity: 0.72;
 }
 
 p {
     width: fit-content;
     min-width: 75%;
+    margin: 0;
     font-family: 'Rubik', sans-serif;
     font-size: 14px;
     color: #121212;
+    white-space: wrap;
     opacity: 0.36;
     border-radius: 8px;
+}
+
+p.small {
+    font-size: 11px;
 }
 
 .cover {
@@ -181,25 +199,12 @@ p {
 }
 
 .cafe-item-name {
-    min-height: 1em;
     margin-top: 8px;
-    font-family: 'Rubik', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: #121212;
-    border-radius: 8px;
-    opacity: 0.72;
 }
 
 .cafe-item-description {
     min-height: 5em;
-    margin-top: 2px;
-    font-family: 'Rubik', sans-serif;
-    font-size: 11px;
-    white-space: wrap;
-    color: #121212;
-    border-radius: 8px;
-    opacity: 0.36;
+    margin-top: 4px;
 }
 
 
@@ -223,22 +228,58 @@ p {
 .cart-item-container {
     display: flex;
     flex-wrap: nowrap;
+    padding: 8px 16px;
 }
 
 .cart-item-image {
-
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    object-fit: cover;
 }
 
 .cart-item-info-container {
-
+    flex: 1;
+    padding: 0 16px;
+    white-space: wrap;
 }
 
 .cart-item-name {
+    margin-top: 4px;
+}
 
+.cart-item-description {
+    margin-top: 2px;
 }
 
 .cart-item-cost {
+    margin-top: 4px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: #168622;
+}
 
+.cart-item-quantity-container {
+    height: 56px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-item-quantity {
+    min-width: 28px;
+    height: 28px;
+    margin: 0 12px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 28px;
+    color: #FFFFFF;
+    background-color: #168622;
+    border-radius: 14px;
+    text-align: center;
 }
 
 

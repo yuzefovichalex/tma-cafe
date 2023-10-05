@@ -23,7 +23,7 @@ export class DetailsPage extends Route {
     }
 
     #fillDetails(menuItem) {
-        loadImage('#cafe-item-details-image', menuItem.image);
+        loadImage($('#cafe-item-details-image'), menuItem.image);
 
         const name = $('#cafe-item-details-name');
         name.removeClass('shimmer');
@@ -33,19 +33,9 @@ export class DetailsPage extends Route {
         description.removeClass('shimmer');
         description.text(menuItem.description);
 
-        const data = {
-            'items': [
-                {
-                    'id': menuItem.id
-                }
-            ]
-        };
         TelegramSDK.showMainButton(
             'Add to Cart',
             () => Cart.addItem(menuItem, 1)
-            // () => post('/order', JSON.stringify(data), (result) => {
-            //     TelegramSDK.openInvoice(result.invoiceUrl);
-            // })
         );
     }
 

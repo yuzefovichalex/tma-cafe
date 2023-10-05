@@ -19,6 +19,8 @@ export class Cart {
 
     static #cartItems = []
 
+    static onItemsChangeListener
+
     static {
         const savedCartItemsJson = localStorage.getItem('cartItems');
         if (savedCartItemsJson != null) {
@@ -49,6 +51,7 @@ export class Cart {
             this.#cartItems.push(cartItem);
         }
         this.#saveItems();
+        this.#notifyAboutItemsChanged();
     }
 
     static removeItem(cafeItem, quantity) {
@@ -60,6 +63,7 @@ export class Cart {
                 removeIf(this.#cartItems, cartItem => cartItem.getId() === existingItem.getId())
             }
             this.#saveItems();
+            this.#notifyAboutItemsChanged();
         }
     }
 
@@ -69,6 +73,12 @@ export class Cart {
 
     static #saveItems() {
         localStorage.setItem('cartItems', JSON.stringify(this.#cartItems));
+    }
+
+    static #notifyAboutItemsChanged() {
+        if (this.onItemsChangeListener != null) {
+            this.onItemsChangeListener(this.#cartItems);
+        } 
     }
 
 }

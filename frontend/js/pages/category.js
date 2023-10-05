@@ -15,7 +15,7 @@ export class CategoryPage extends Route {
         if (portionCount > 0) {
             TelegramSDK.showMainButton(
                 `Go to Cart (${portionCount})`,
-                () => { }
+                () => navigateTo('cart')
             )
         } else {
             TelegramSDK.hideMainButton();
