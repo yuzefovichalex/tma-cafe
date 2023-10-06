@@ -51,6 +51,14 @@ p.small {
     border-bottom-right-radius: 24px;
 }
 
+.page {
+    width: 100vw;
+    min-height: 100%;
+    position: absolute;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(160, 160, 160, 0.1), 0 6px 20px 0 rgba(160, 160, 160, 0.1);
+}
+
 
 
 /* Cafe info */

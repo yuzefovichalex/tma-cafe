@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="css/index.css"/>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ricostacruz.com/jquery.transit/jquery.transit.min.js"></script>
     <script type="module" src="js/index.js"></script>
 </head>
 <body>
-    <div id="content"></div>
-    <!--<button id="telegram-button" style="position: absolute; width: calc(100% - 32px); height: 56px; bottom: 16px; margin-right: 16px; margin-left: 16px;">Telegram button</button>-->
+    <div id="content">
+        <div id="page-current" class="page"></div>
+        <div id="page-next" class="page" style="display: none;"></div>
+    </div>
+    <!-- <button id="telegram-button" style="position: absolute; width: calc(100% - 32px); height: 56px; bottom: 16px; margin-right: 16px; margin-left: 16px; z-index: 3;">Telegram button</button> -->
 </body>
 </html>
