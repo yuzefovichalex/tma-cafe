@@ -11,11 +11,12 @@ const routes = [
     new CartPage()
 ]
 
-var pendingAnimations = false
-var animationRunning = false
+let pageLoadRequest
+let pendingAnimations = false
+let animationRunning = false
 
 export const navigateTo = (dest, params) => {
-    var url = '?dest=' + dest;
+    let url = '?dest=' + dest;
     if (params != null) {
         url += '&params=' + encodeURIComponent(params);
     }
@@ -41,13 +42,21 @@ export const handleLocation = (reverse) => {
             return;
         }
 
+        if (pageLoadRequest != null) {
+            pageLoadRequest.abort();
+        }
+
         if ($('#page-current').contents().length > 0) {
-            $('#page-next').load(route.contentPath, () => {
-                animatePageChange(reverse);
+            pageLoadRequest = loadPage('#page-next', route.contentPath, () => { 
+                pageLoadRequest = null;
                 route.load(loadParams);
             });
+            animatePageChange(reverse);
         } else {
-            $('#page-current').load(route.contentPath, () => route.load(loadParams));
+            pageLoadRequest = loadPage('#page-current', route.contentPath, () => {
+                pageLoadRequest = null;
+                route.load(loadParams)
+            });
         }
 
         if (route.dest !== 'root') {
@@ -57,6 +66,17 @@ export const handleLocation = (reverse) => {
         }
     }
 };
+
+function loadPage(pageContainerSelector, pagePath, onSuccess) {
+    const container = $(pageContainerSelector);
+    return $.ajax({
+        url: pagePath,
+        success: (page) => {
+          container.html(page);
+          onSuccess();
+        }
+    });
+}
 
 function animatePageChange(reverse) {
     animationRunning = true;
@@ -90,19 +110,24 @@ function animatePageChange(reverse) {
 }
 
 function restorePagesInitialState() {
-    $('#page-current')
-        .css({
-            transform: '',
-            'z-index': '2'
-        })
-        .empty();
+    const currentPage = $('#page-current');
+    const nextPage = $('#page-next');
 
-    $('#page-next')
+    currentPage
+        .attr('id', 'page-next')
         .css({
             display: 'none',
             'z-index': '1'
         })
-        .contents().appendTo('#page-current');
+        .empty();
+
+    nextPage
+        .attr('id', 'page-current')
+        .css({
+            display: '',
+            transform: '',
+            'z-index': '2'
+        });
 }
 
 window.onpopstate = () => handleLocation(true);
