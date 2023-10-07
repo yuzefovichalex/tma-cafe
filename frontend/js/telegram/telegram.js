@@ -34,6 +34,18 @@ export class TelegramSDK {
         Telegram.WebApp.BackButton.hide();
     }
 
+    static impactOccured(style) {
+        if (Telegram.WebApp.isVersionAtLeast('6.1')) {
+            Telegram.WebApp.HapticFeedback.impactOccurred(style);
+        }
+    }
+
+    static notificationOccured(style) {
+        if (Telegram.WebApp.isVersionAtLeast('6.1')) {
+            Telegram.WebApp.HapticFeedback.notificationOccurred(style);
+        }
+    }
+
     static openInvoice(url, callback) {
         Telegram.WebApp.openInvoice(url, callback);
     }

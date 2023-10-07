@@ -48,9 +48,11 @@ export class CartPage extends Route {
                 filledCartItemTemplate.find('#cart-item-quantity').text(cartItem.quantity);
                 filledCartItemTemplate.find('#cart-item-quantity-increment').on('click', () => {
                     Cart.addItem(cartItem.cafeItem, 1);
+                    TelegramSDK.impactOccured('light');
                 });
                 filledCartItemTemplate.find('#cart-item-quantity-decrement').on('click', () => {
                     Cart.removeItem(cartItem.cafeItem, 1);
+                    TelegramSDK.impactOccured('light');
                 });
                 cartItemsContainer.append(filledCartItemTemplate);
             }

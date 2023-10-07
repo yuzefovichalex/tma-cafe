@@ -1,5 +1,5 @@
 import { Route } from "../routing/route.js";
-import { get, post } from "../requests/requests.js";
+import { get } from "../requests/requests.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 import { Cart } from "../cart/cart.js";
@@ -35,7 +35,10 @@ export class DetailsPage extends Route {
 
         TelegramSDK.showMainButton(
             'Add to Cart',
-            () => Cart.addItem(menuItem, 1)
+            () => {
+                Cart.addItem(menuItem, 1);
+                TelegramSDK.notificationOccured('success');
+            }
         );
     }
 
