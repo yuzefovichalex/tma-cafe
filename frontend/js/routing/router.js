@@ -11,6 +11,8 @@ const availableRoutes = [
     new CartPage()
 ]
 
+const pageContentCache = { }
+
 let currentRoute
 
 let pageContentLoadRequest
@@ -75,13 +77,21 @@ export const handleLocation = (reverse) => {
 
 function loadPage(pageContainerSelector, pagePath, onSuccess) {
     const container = $(pageContainerSelector);
-    return $.ajax({
-        url: pagePath,
-        success: (page) => {
-          container.html(page);
-          onSuccess();
-        }
-    });
+    const page = pageContentCache[pagePath];
+    if (page != null) {
+        container.html(page);
+        onSuccess();
+        return null;
+    } else {
+        return $.ajax({
+            url: pagePath,
+            success: (page) => {
+                pageContentCache[pagePath] = page;
+                container.html(page);
+                onSuccess();
+            }
+        });
+    }
 }
 
 function animatePageChange(reverse) {
