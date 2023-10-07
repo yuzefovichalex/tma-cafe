@@ -69,4 +69,8 @@ export class CartPage extends Route {
             TelegramSDK.hideMainButton();
         }
     }
+
+    onClose() {
+        Cart.onItemsChangeListener = null;
+    }
 }

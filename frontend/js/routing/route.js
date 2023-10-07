@@ -5,4 +5,6 @@ export class Route {
     }
 
     load(params) { }
+
+    onClose() { }
 }

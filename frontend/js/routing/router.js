@@ -4,14 +4,16 @@ import { DetailsPage } from "../pages/details.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { CartPage } from "../pages/cart.js";
 
-const routes = [
+const availableRoutes = [
     new MainPage(),
     new CategoryPage(),
     new DetailsPage(),
     new CartPage()
 ]
 
-let pageLoadRequest
+let currentRoute
+
+let pageContentLoadRequest
 let pendingAnimations = false
 let animationRunning = false
 
@@ -29,37 +31,41 @@ export const handleLocation = (reverse) => {
     if (search === "") {
         navigateTo('root')
     } else {
+        if (animationRunning) {
+            pendingAnimations = true;
+            return;
+        }
+
+        if (currentRoute != null) {
+            currentRoute.onClose();
+        }
+
         const searchParams = new URLSearchParams(search);
         const dest = searchParams.get('dest') || 'root';
         const encodedLoadParams = searchParams.get('params');
         if (encodedLoadParams != null) {
             var loadParams = decodeURIComponent(encodedLoadParams);
         }
-        const route = routes.find((route) => dest === route.dest);
+        currentRoute = availableRoutes.find((route) => dest === route.dest);
 
-        if (animationRunning) {
-            pendingAnimations = true;
-            return;
-        }
-
-        if (pageLoadRequest != null) {
-            pageLoadRequest.abort();
+        if (pageContentLoadRequest != null) {
+            pageContentLoadRequest.abort();
         }
 
         if ($('#page-current').contents().length > 0) {
-            pageLoadRequest = loadPage('#page-next', route.contentPath, () => { 
-                pageLoadRequest = null;
-                route.load(loadParams);
+            pageContentLoadRequest = loadPage('#page-next', currentRoute.contentPath, () => { 
+                pageContentLoadRequest = null;
+                currentRoute.load(loadParams);
             });
             animatePageChange(reverse);
         } else {
-            pageLoadRequest = loadPage('#page-current', route.contentPath, () => {
-                pageLoadRequest = null;
-                route.load(loadParams)
+            pageContentLoadRequest = loadPage('#page-current', currentRoute.contentPath, () => {
+                pageContentLoadRequest = null;
+                currentRoute.load(loadParams)
             });
         }
 
-        if (route.dest !== 'root') {
+        if (currentRoute.dest !== 'root') {
             TelegramSDK.showBackButton(() => history.back());
         } else {
             TelegramSDK.hideBackButton();
