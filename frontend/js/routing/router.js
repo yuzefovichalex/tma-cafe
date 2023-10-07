@@ -131,5 +131,3 @@ function restorePagesInitialState() {
 }
 
 window.onpopstate = () => handleLocation(true);
-
-handleLocation();
