@@ -6,6 +6,8 @@
     --accent-color: var(--tg-theme-button-color, #609F6D);
     --on-accent-color: var(--tg-theme-button-text-color, #FFFFFF);
     --divider-color: #80808025;
+    --success-color: #609F6D;
+    --error-color: #;
     --shimmer-color-1: #555555;
     --shimmer-color-2: #000000;
 }
@@ -14,6 +16,7 @@
     --bg-color: var(--tg-theme-secondary-bg-color, var(--tg-theme-bg-color, #121212));
     --popover-bg-color: var(--tg-theme-bg-color, #242424);
     --text-color: var(--tg-theme-text-color, #FFFFFF);
+    --divider-color: #FFFFFF15;
     --shimmer-color-1: #D0D0D0;
     --shimmer-color-2: #FFFFFF;
 }
@@ -157,7 +160,7 @@ p.small {
 
 .cafe-status {
     padding: 4px 16px;
-    background-color: lightgreen;
+    background-color: var(--success-color);
     border-radius: 6px;
     font-family: 'Rubik', sans-serif;
     font-size: 14px;
@@ -337,12 +340,17 @@ p.small {
         0 3.5px 15px hsla(230, 13%, 9%, 0.09);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    z-index: 2;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 16px;
+}
+
+.cafe-item-details-snackbar {
+    background-color: var(--success-color);
 }
 
 
@@ -409,6 +417,24 @@ p.small {
 
 
 /* Common (effect, animations, etc.) */
+
+.snackbar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 16px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    color: var(--on-accent-color);
+    background-color: var(--accent-color);
+    padding: 16px 24px;
+    border-radius: 16px;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.24);
+}
 
 .shimmer {
     animation-duration: 2.2s;

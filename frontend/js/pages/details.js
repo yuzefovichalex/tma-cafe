@@ -4,6 +4,7 @@ import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 import { Cart } from "../cart/cart.js";
 import { toDisplayCost } from "../utils/currency.js"
+import { Snackbar } from "../utils/snackbar.js";
 
 export class DetailsPage extends Route {
 
@@ -65,6 +66,7 @@ export class DetailsPage extends Route {
             'Add to Cart',
             () => {
                 Cart.addItem(menuItem, this.#selectedVariant, this.#selectedQuantity);
+                this.#showSuccessSnackbar();
                 TelegramSDK.notificationOccured('success');
             }
         );
@@ -95,6 +97,16 @@ export class DetailsPage extends Route {
             this.#selectedQuantity--;
         }
         $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
+    }
+
+    #showSuccessSnackbar() {
+        Snackbar.showSnackbar(
+            'cafe-item-details-container',
+            'Successfully added to cart!',
+            {
+                bottom: '88px'
+            }
+        );
     }
 
 }
