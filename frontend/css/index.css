@@ -5,6 +5,7 @@
     --text-color: var(--tg-theme-text-color, #333333);
     --accent-color: var(--tg-theme-button-color, #609F6D);
     --on-accent-color: var(--tg-theme-button-text-color, #FFFFFF);
+    --divider-color: #80808025;
     --shimmer-color-1: #555555;
     --shimmer-color-2: #000000;
 }
@@ -258,6 +259,21 @@ p.small {
 
 /* Cafe item details */
 
+.cafe-item-details-container {
+    height: 100vh;
+}
+
+.cafe-item-details-content {
+    /* Quantity selector container minmimum height x2 */
+    padding-bottom: 144px;
+}
+
+.cafe-item-details-quantity-selector-value {
+    padding: 8px 32px;
+    background-color: var(--divider-color);
+    border-radius: 16px;
+}
+
 .cafe-item-details-name {
     margin: 16px 16px 0 16px;
 }
@@ -292,7 +308,7 @@ p.small {
     padding: 8px 16px;
     font-family: 'Rubik', sans-serif;
     font-size: 14px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--divider-color);
     border-radius: 20px;
     transition: background-color 0.3s ease;
 }
@@ -306,6 +322,27 @@ p.small {
 .cafe-item-details-selected-variant-price {
     min-width: 3em;
     min-height: 1em;
+}
+
+.cafe-item-details-quantity-selector-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 72px;
+    background-color: var(--popover-bg-color);
+    box-shadow: inset 
+        0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+        0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+        0 3.5px 15px hsla(230, 13%, 9%, 0.09);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 

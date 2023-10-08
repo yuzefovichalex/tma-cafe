@@ -1,11 +1,21 @@
 <section>
-    <img id="cafe-item-details-image" class="cover shimmer" src="icons/icon-transparent.svg"/>
-    <h1 id="cafe-item-details-name" class="cafe-item-details-name shimmer"></h1>
-    <p id="cafe-item-details-description" class="cafe-item-details-description shimmer"></p>
-    <h3 id="cafe-item-details-section-title" class="cafe-item-details-section-title shimmer">Price</h3>
-    <div class="cafe-item-details-section-price">
-        <div id="cafe-item-details-variants" class="cafe-item-details-variants"></div>
-        <h2 id="cafe-item-details-selected-variant-price" class="cafe-item-details-selected-variant-price shimmer"></h2>
+    <div class="cafe-item-details-container">
+        <div class="cafe-item-details-content">
+            <img id="cafe-item-details-image" class="cover shimmer" src="icons/icon-transparent.svg"/>
+            <h1 id="cafe-item-details-name" class="cafe-item-details-name shimmer"></h1>
+            <p id="cafe-item-details-description" class="cafe-item-details-description shimmer"></p>
+            <h3 id="cafe-item-details-section-title" class="cafe-item-details-section-title shimmer">Price</h3>
+            <div class="cafe-item-details-section-price">
+                <div id="cafe-item-details-variants" class="cafe-item-details-variants"></div>
+                <h2 id="cafe-item-details-selected-variant-price" class="cafe-item-details-selected-variant-price shimmer"></h2>
+            </div>
+        </div>
+
+        <div class="cafe-item-details-quantity-selector-container">
+            <span id="cafe-item-details-quantity-decrease-button" class="material-symbols-rounded">remove</span>
+            <h2 id="cafe-item-details-quantity-value" class="cafe-item-details-quantity-selector-value">1</h2>
+            <span id="cafe-item-details-quantity-increase-button" class="material-symbols-rounded">add</span>
+        </div>
     </div>
 
     <template id="cafe-item-details-variant-template">

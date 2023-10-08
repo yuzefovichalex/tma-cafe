@@ -8,6 +8,7 @@ import { toDisplayCost } from "../utils/currency.js"
 export class DetailsPage extends Route {
 
     #selectedVariant;
+    #selectedQuantity = 1;
 
     constructor() {
         super('details', '/pages/details.html')
@@ -56,15 +57,15 @@ export class DetailsPage extends Route {
             this.#selectVariant(variants[0]);
         }
 
+        $('#cafe-item-details-quantity-decrease-button').on('click', () => this.#decreaseQuantity());
+
+        $('#cafe-item-details-quantity-increase-button').on('click', () => this.#increaseQuantity())
+
         TelegramSDK.showMainButton(
             'Add to Cart',
             () => {
-                if (this.#selectedVariant != null) {
-                    Cart.addItem(menuItem, this.#selectedVariant, 1);
-                    TelegramSDK.notificationOccured('success');
-                } else {
-                    // Should not be possible, since we pre-select variant above.
-                }
+                Cart.addItem(menuItem, this.#selectedVariant, this.#selectedQuantity);
+                TelegramSDK.notificationOccured('success');
             }
         );
     }
@@ -82,6 +83,18 @@ export class DetailsPage extends Route {
         const selectedVariantPrice = $('#cafe-item-details-selected-variant-price');
         selectedVariantPrice.removeClass('shimmer');
         selectedVariantPrice.text(toDisplayCost(this.#selectedVariant.cost));
+    }
+
+    #increaseQuantity() {
+        this.#selectedQuantity++;
+        $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
+    }
+
+    #decreaseQuantity() {
+        if (this.#selectedQuantity > 1) {
+            this.#selectedQuantity--;
+        }
+        $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
     }
 
 }
