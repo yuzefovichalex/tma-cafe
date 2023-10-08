@@ -3,24 +3,80 @@
         "id": "ice-cream-1",
         "image": "https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Black Cherry",
-        "description": "Black cherry ice cream with whole black cherries."
+        "description": "Black cherry ice cream with whole black cherries.",
+        "variants": [
+            {
+                "id": "n",
+                "name": "Normal",
+                "cost": "540",
+                "weight": "90g"
+            }
+        ]
     },
     {
         "id": "ice-cream-2",
         "image": "https://images.unsplash.com/photo-1629385697093-57be2cc97fa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Raspberry cheesecake chunk",
-        "description": "Cheesecake ice cream with raspberry ripple and cheesecake chunks."
+        "description": "Cheesecake ice cream with raspberry ripple and cheesecake chunks.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "One scoop",
+                "cost": "540",
+                "weight": "90g"
+            },
+            {
+                "id": "m",
+                "name": "Two scoop",
+                "cost": "714",
+                "weight": "180g"
+            },
+            {
+                "id": "l",
+                "name": "Three scoop",
+                "cost": "834",
+                "weight": "270g"
+            }
+        ]
     },
     {
         "id": "ice-cream-3",
         "image": "https://images.unsplash.com/photo-1514910539021-85477c9cdcf8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Chocoholic peanut butter ripple",
-        "description": "Deep, dark chocolate ice cream with Reese's Peanut Butter ripple."
+        "description": "Deep, dark chocolate ice cream with Reese's Peanut Butter ripple.",
+        "variants": [
+            {
+                "id": "n",
+                "name": "Normal",
+                "cost": "540",
+                "weight": "90g"
+            }
+        ]
     },
     {
         "id": "ice-cream-4",
         "image": "https://images.unsplash.com/photo-1579954115563-e72bf1381629?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Dulce De Leche",
-        "description": "Caramel ice cream with caramel ripple."
+        "description": "Caramel ice cream with caramel ripple.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "One scoop",
+                "cost": "540",
+                "weight": "90g"
+            },
+            {
+                "id": "m",
+                "name": "Two scoop",
+                "cost": "714",
+                "weight": "180g"
+            },
+            {
+                "id": "l",
+                "name": "Three scoop",
+                "cost": "834",
+                "weight": "270g"
+            }
+        ]
     }
 ]

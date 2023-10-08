@@ -8,17 +8,15 @@
             {
                 "id": "s",
                 "name": "Small",
-                "cost": "200"
-            },
-            {
-                "id": "m",
-                "name": "Medium",
-                "cost": "300"
+                "cost": "1199",
+                "weight": "200g"
+
             },
             {
                 "id": "l",
                 "name": "Large",
-                "cost": "400"
+                "cost": "1399",
+                "weight": "280g"
             }
         ]
     },
@@ -27,13 +25,45 @@
         "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Bianca Fresca",
         "description": "White pizza with garlic infused olive oil, goat cheese, fresh mozzarella fior di latte, prosciutto fired off then topped with arugula and shaved parmesan.",
-        "variants": []
+        "variants": [
+            {
+                "id": "s",
+                "name": "Small",
+                "cost": "1479",
+                "weight": "410g"
+            },
+            {
+                "id": "m",
+                "name": "Medium",
+                "cost": "1699",
+                "weight": "600g"
+            },
+            {
+                "id": "l",
+                "name": "Large",
+                "cost": "1799",
+                "weight": "800g"
+            }
+        ]
     },
     {
         "id": "pasta-1",
         "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Spaghetti alla Carbonara",
         "description": "Spaghetti in a creamy sauce made with egg, prosciutto, sautéed onions, Parmesan cheese and black pepper.",
-        "variants": []
+        "variants": [
+            {
+                "id": "n",
+                "name": "Normal",
+                "cost": "1109",
+                "weight": "300g"
+            },
+            {
+                "id": "g",
+                "name": "Gluten Free",
+                "cost": "1290",
+                "weight": "300g"
+            }
+        ]
     }
 ]

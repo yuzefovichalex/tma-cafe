@@ -8,17 +8,15 @@
             {
                 "id": "s",
                 "name": "Small",
-                "cost": "200"
-            },
-            {
-                "id": "m",
-                "name": "Medium",
-                "cost": "300"
+                "cost": "1199",
+                "weight": "200g"
+
             },
             {
                 "id": "l",
                 "name": "Large",
-                "cost": "400"
+                "cost": "1399",
+                "weight": "280g"
             }
         ]
     },
@@ -26,18 +24,60 @@
         "id": "burger-2",
         "image": "https://images.unsplash.com/photo-1571091655789-405eb7a3a3a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Jalapeno & Habanero burger",
-        "description": "From aged beef, with slices of jalapeño and habanero peppers, Cheddar cheese, homemade guacamole, arugula, romaine lettuce, spicy tomato salsa and grilled corn."
+        "description": "From aged beef, with slices of jalapeño and habanero peppers, Cheddar cheese, homemade guacamole, arugula, romaine lettuce, spicy tomato salsa and grilled corn.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "Small",
+                "cost": "1249",
+                "weight": "210g"
+            },
+            {
+                "id": "l",
+                "name": "Large",
+                "cost": "1560",
+                "weight": "320g"
+            }
+        ]
     },
     {
         "id": "burger-3",
         "image": "https://images.unsplash.com/photo-1610970878459-a0e464d7592b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Pulled pork smoked knee burger",
-        "description": "Pulled smoked pork knuckle braised with black beer and thyme, homemade BBQ sauce, spicy cabbage salad, romaine lettuce and Cheddar cheese."
+        "description": "Pulled smoked pork knuckle braised with black beer and thyme, homemade BBQ sauce, spicy cabbage salad, romaine lettuce and Cheddar cheese.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "Small",
+                "cost": "1299",
+                "weight": "254g"
+            },
+            {
+                "id": "l",
+                "name": "Large",
+                "cost": "1470",
+                "weight": "370g"
+            }
+        ]
     },
     {
         "id": "burger-4",
         "image": "https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Chiken burger",
-        "description": "Grilled chicken breast with crispy bacon, Cheddar cheese, arugula, beetroot leaves, pickles and spicy homemade mayonnaise."
+        "description": "Grilled chicken breast with crispy bacon, Cheddar cheese, arugula, beetroot leaves, pickles and spicy homemade mayonnaise.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "Small",
+                "cost": "1390",
+                "weight": "320g"
+            },
+            {
+                "id": "l",
+                "name": "Large",
+                "cost": "1580",
+                "weight": "500g"
+            }
+        ]
     }
 ]
