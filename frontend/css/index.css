@@ -7,7 +7,8 @@
     --on-accent-color: var(--tg-theme-button-text-color, #FFFFFF);
     --divider-color: #80808025;
     --success-color: #609F6D;
-    --error-color: #;
+    --warning-color: #FFD775;
+    --error-color: #F45B55;
     --shimmer-color-1: #555555;
     --shimmer-color-2: #000000;
 }
@@ -353,6 +354,10 @@ p.small {
 
 /* Cart item */
 
+.cart-items-container {
+    height: 100vh;
+}
+
 .cart-item-container {
     display: flex;
     flex-wrap: nowrap;
@@ -417,7 +422,7 @@ p.small {
 .snackbar {
     display: block;
     position: fixed;
-    bottom: 0;
+    bottom: 16px;
     left: 0;
     right: 0;
     margin: 0 16px;
@@ -427,7 +432,7 @@ p.small {
     background-color: var(--accent-color);
     padding: 16px 24px;
     border-radius: 16px;
-    z-index: 1;
+    z-index: 3;
     opacity: 0;
     transform: scale(0.24);
 }

@@ -1,6 +1,7 @@
 import { Cart } from "../cart/cart.js"
 import { post } from "../requests/requests.js";
 import { Route } from "../routing/route.js";
+import { showSnackbar } from "../routing/router.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 
@@ -67,11 +68,24 @@ export class CartPage extends Route {
             TelegramSDK.showMainButton(
                 'CHECKOUT',
                 () => post('/order', JSON.stringify(cartItems), (result) => {
-                    TelegramSDK.openInvoice(result.invoiceUrl);
+                    TelegramSDK.openInvoice(result.invoiceUrl, (status) => {
+                        this.#handleInvoiceStatus(status);
+                    });
                 })
             );
         } else {
             TelegramSDK.hideMainButton();
+        }
+    }
+
+    #handleInvoiceStatus(status) {
+        if (status == 'paid') {
+            Cart.clear();
+            TelegramSDK.close();
+        } else if (status == 'failed') {
+            showSnackbar('Something went wrong, payment is unsuccessful :(', 'error');
+        } else {
+            showSnackbar('The order was cancelled.', 'warning');
         }
     }
 

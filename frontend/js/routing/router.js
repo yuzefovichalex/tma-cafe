@@ -3,6 +3,7 @@ import { CategoryPage } from "../pages/category.js";
 import { DetailsPage } from "../pages/details.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { CartPage } from "../pages/cart.js";
+import { Snackbar } from "../utils/snackbar.js";
 
 const availableRoutes = [
     new MainPage(),
@@ -74,6 +75,23 @@ export const handleLocation = (reverse) => {
         }
     }
 };
+
+export function showSnackbar(text, style) {
+    const colorVariable = style == 'success' ? '--success-color'
+        : style == 'warning' ? '--warning-color'
+        : style == 'error' ? '--error-color'
+        : '--accent-color';
+
+    Snackbar.showSnackbar(
+        'content',
+        text,
+        {
+            'background-color': `var(${colorVariable})`
+        }
+    );
+
+    TelegramSDK.notificationOccured(style);
+}
 
 function loadPage(pageContainerSelector, pagePath, onSuccess) {
     const container = $(pageContainerSelector);

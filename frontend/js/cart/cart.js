@@ -87,6 +87,12 @@ export class Cart {
         }
     }
 
+    static clear() {
+        this.#cartItems = [];
+        this.#saveItems();
+        this.#notifyAboutItemsChanged();
+    }
+
     static #findItem(id) {
         return this.#cartItems.find(cartItem => cartItem.getId() === id);
     }
