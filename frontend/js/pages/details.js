@@ -58,9 +58,9 @@ export class DetailsPage extends Route {
             this.#selectVariant(variants[0]);
         }
 
+        this.#resetQuantity();
         $('#cafe-item-details-quantity-decrease-button').on('click', () => this.#decreaseQuantity());
-
-        $('#cafe-item-details-quantity-increase-button').on('click', () => this.#increaseQuantity())
+        $('#cafe-item-details-quantity-increase-button').on('click', () => this.#increaseQuantity());
 
         TelegramSDK.showMainButton(
             'Add to Cart',
@@ -78,10 +78,10 @@ export class DetailsPage extends Route {
         }
         $(`#${variant.id}`).addClass('selected');
         this.#selectedVariant = variant;
-        this.#updateSelectedVariantPrice();
+        this.#refreshSelectedVariantPrice();
     }
 
-    #updateSelectedVariantPrice() {
+    #refreshSelectedVariantPrice() {
         const selectedVariantPrice = $('#cafe-item-details-selected-variant-price');
         selectedVariantPrice.removeClass('shimmer');
         selectedVariantPrice.text(toDisplayCost(this.#selectedVariant.cost));
@@ -89,13 +89,24 @@ export class DetailsPage extends Route {
 
     #increaseQuantity() {
         this.#selectedQuantity++;
-        $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
+        this.#refreshSelectedQuantity();
+        TelegramSDK.impactOccured('light');
     }
 
     #decreaseQuantity() {
         if (this.#selectedQuantity > 1) {
             this.#selectedQuantity--;
+            this.#refreshSelectedQuantity();
+            TelegramSDK.impactOccured('light');
         }
+    }
+
+    #resetQuantity() {
+        this.#selectedQuantity = 1;
+        this.#refreshSelectedQuantity();
+    }
+
+    #refreshSelectedQuantity() {
         $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
     }
 
@@ -104,7 +115,8 @@ export class DetailsPage extends Route {
             'cafe-item-details-container',
             'Successfully added to cart!',
             {
-                bottom: '88px'
+                bottom: '80px',
+                'background-color': 'var(--success-color)'
             }
         );
     }
