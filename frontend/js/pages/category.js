@@ -30,7 +30,9 @@ export class CategoryPage extends Route {
     }
 
     #loadMenu(categoryId) {
-        get('/menu/' + categoryId, this.#fillMenu);
+        get('/menu/' + categoryId, (cafeItems) => {
+            this.#fillMenu(cafeItems);
+        });
     }
 
     #fillMenu(cafeItems) {

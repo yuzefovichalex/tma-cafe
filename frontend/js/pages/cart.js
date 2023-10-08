@@ -38,6 +38,7 @@ export class CartPage extends Route {
             const cartItemElement = cartItemsContainer.find(`#${cartItem.getId()}`);
             if (cartItemElement.length > 0) {
                 // We found the existing item, just update the needed params
+                cartItemElement.find('#cart-item-cost').text(cartItem.getDisplayTotalCost());
                 cartItemElement.find('#cart-item-quantity').text(cartItem.quantity);
             } else {
                 // This is the newely added item, create new element for it
@@ -45,13 +46,15 @@ export class CartPage extends Route {
                 filledCartItemTemplate.attr('id', `${cartItem.getId()}`)
                 loadImage(filledCartItemTemplate.find('#cart-item-image'), cartItem.cafeItem.image);
                 filledCartItemTemplate.find('#cart-item-name').text(cartItem.cafeItem.name);
+                filledCartItemTemplate.find('#cart-item-description').text(cartItem.variant.name);
+                filledCartItemTemplate.find('#cart-item-cost').text(cartItem.getDisplayTotalCost());
                 filledCartItemTemplate.find('#cart-item-quantity').text(cartItem.quantity);
                 filledCartItemTemplate.find('#cart-item-quantity-increment').on('click', () => {
-                    Cart.addItem(cartItem.cafeItem, 1);
+                    Cart.increaseQuantity(cartItem, 1);
                     TelegramSDK.impactOccured('light');
                 });
                 filledCartItemTemplate.find('#cart-item-quantity-decrement').on('click', () => {
-                    Cart.removeItem(cartItem.cafeItem, 1);
+                    Cart.decreaseQuantity(cartItem, 1);
                     TelegramSDK.impactOccured('light');
                 });
                 cartItemsContainer.append(filledCartItemTemplate);

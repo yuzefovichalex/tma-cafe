@@ -36,6 +36,24 @@ h1 {
     display: block;
 }
 
+h2 {
+    width: fit-content;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+h3 {
+    width: fit-content;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
 h6 {
     width: fit-content;
     min-width: 45%;
@@ -154,13 +172,8 @@ p.small {
 }
 
 .cafe-section-title {
-    width: fit-content;
     margin-left: 16px;
     margin-right: 16px;
-    font-family: 'Rubik', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 8px;
 }
 
 .cafe-section-horizontal {
@@ -253,6 +266,46 @@ p.small {
     min-width: calc(100% - 32px);
     min-height: 3em;
     margin: 16px 16px 0 16px;
+}
+
+.cafe-item-details-section-title {
+    margin: 16px 16px 0 16px;
+}
+
+.cafe-item-details-section-price {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 16px;
+    padding: 0 16px;
+}
+
+.cafe-item-details-variants {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 8px;
+}
+
+.cafe-item-details-variant {
+    display: inline-block;
+    padding: 8px 16px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cafe-item-details-variant.selected {
+    color: var(--on-accent-color);
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.cafe-item-details-selected-variant-price {
+    min-width: 3em;
+    min-height: 1em;
 }
 
 

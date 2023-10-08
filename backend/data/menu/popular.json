@@ -3,18 +3,37 @@
         "id": "burger-1",
         "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Hamburger",
-        "description": "From aged beef, with homemade ketchup, romaine lettuce and tomato."
+        "description": "From aged beef, with homemade ketchup, romaine lettuce and tomato.",
+        "variants": [
+            {
+                "id": "s",
+                "name": "Small",
+                "cost": "200"
+            },
+            {
+                "id": "m",
+                "name": "Medium",
+                "cost": "300"
+            },
+            {
+                "id": "l",
+                "name": "Large",
+                "cost": "400"
+            }
+        ]
     },
     {
         "id": "pizza-1",
         "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Bianca Fresca",
-        "description": "White pizza with garlic infused olive oil, goat cheese, fresh mozzarella fior di latte, prosciutto fired off then topped with arugula and shaved parmesan."
+        "description": "White pizza with garlic infused olive oil, goat cheese, fresh mozzarella fior di latte, prosciutto fired off then topped with arugula and shaved parmesan.",
+        "variants": []
     },
     {
         "id": "pasta-1",
         "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=center&w=1920&q=80",
         "name": "Spaghetti alla Carbonara",
-        "description": "Spaghetti in a creamy sauce made with egg, prosciutto, sautéed onions, Parmesan cheese and black pepper."
+        "description": "Spaghetti in a creamy sauce made with egg, prosciutto, sautéed onions, Parmesan cheese and black pepper.",
+        "variants": []
     }
 ]

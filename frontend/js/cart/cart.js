@@ -1,17 +1,28 @@
 import { removeIf } from "../utils/array.js";
+import { toDisplayCost } from "../utils/currency.js";
 
 class CartItem {
-    constructor(cafeItem, quantity) {
+    constructor(cafeItem, variant, quantity) {
         this.cafeItem = cafeItem;
+        this.variant = variant;
         this.quantity = quantity;
     }
 
     static fromRaw(rawCartItem) {
-        return new CartItem(rawCartItem.cafeItem, rawCartItem.quantity);
+        return new CartItem(
+            rawCartItem.cafeItem,
+            rawCartItem.variant,
+            rawCartItem.quantity
+        );
     }
 
     getId() {
-        return this.cafeItem.id;
+        return `${this.cafeItem.id}-${this.variant.id}`;
+    }
+
+    getDisplayTotalCost() {
+        const totalCost = this.variant.cost * this.quantity;
+        return toDisplayCost(totalCost);
     }
 }
 
@@ -42,20 +53,29 @@ export class Cart {
         return portionCount;
     }
 
-    static addItem(cafeItem, quantity) {
-        const existingItem = this.#findItem(cafeItem.id);
+    static addItem(cafeItem, variant, quantity) {
+        const addingCartItem = new CartItem(cafeItem, variant, quantity);
+        const existingItem = this.#findItem(addingCartItem.getId());
         if (existingItem != null) {
             existingItem.quantity += quantity;
         } else {
-            const cartItem = new CartItem(cafeItem, quantity);
-            this.#cartItems.push(cartItem);
+            this.#cartItems.push(addingCartItem);
         }
         this.#saveItems();
         this.#notifyAboutItemsChanged();
     }
 
-    static removeItem(cafeItem, quantity) {
-        const existingItem = this.#findItem(cafeItem.id);
+    static increaseQuantity(cartItem, quantity) {
+        const existingItem = this.#findItem(cartItem.getId());
+        if (existingItem != null) {
+            existingItem.quantity += quantity;
+            this.#saveItems();
+            this.#notifyAboutItemsChanged();
+        }
+    }
+
+    static decreaseQuantity(cartItem, quantity) {
+        const existingItem = this.#findItem(cartItem.getId());
         if (existingItem != null) {
             if (existingItem.quantity > quantity) {
                 existingItem.quantity -= quantity;

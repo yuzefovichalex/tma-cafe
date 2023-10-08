@@ -27,15 +27,21 @@ export class MainPage extends Route {
     }
 
     #loadCafeInfo() {
-        get('/info', this.#fillCafeInfo);
+        get('/info', (cafeInfo) => {
+            this.#fillCafeInfo(cafeInfo);
+        });
     }
     
     #loadCategories() {
-        get('/categories', this.#fillCategories)
+        get('/categories', (categories) => {
+            this.#fillCategories(categories);
+        })
     }
     
     #loadPopularMenu() {
-        get('/menu/popular', this.#fillPopularMenu);
+        get('/menu/popular', (popularMenu) => {
+            this.#fillPopularMenu(popularMenu);
+        });
     }
     
     #fillCafeInfo(cafeInfo) {
