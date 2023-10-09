@@ -20,6 +20,8 @@ export class DetailsPage extends Route {
     }
 
     load(params) {
+        TelegramSDK.expand();
+
         if (params != null) {
             const parsedParams = JSON.parse(params);
             this.#loadDetails(parsedParams.id);

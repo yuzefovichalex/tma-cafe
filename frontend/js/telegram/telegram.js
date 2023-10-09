@@ -57,6 +57,10 @@ export class TelegramSDK {
         Telegram.WebApp.openInvoice(url, callback);
     }
 
+    static expand() {
+        Telegram.WebApp.expand();
+    }
+
     static close() {
         Telegram.WebApp.close();
     }

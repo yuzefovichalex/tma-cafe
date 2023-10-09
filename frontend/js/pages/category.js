@@ -14,6 +14,8 @@ export class CategoryPage extends Route {
     }
 
     load(params) {
+        TelegramSDK.expand();
+
         const portionCount = Cart.getPortionCount()
         if (portionCount > 0) {
             TelegramSDK.showMainButton(
