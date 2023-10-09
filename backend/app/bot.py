@@ -13,7 +13,13 @@ bot = TeleBot(BOT_TOKEN, parse_mode=None)
 
 @bot.message_handler(content_types=['successful_payment'])
 def handle_successful_payment(message):
-    bot.send_message(message.chat.id, 'You have successfully ordered from Laurel Cafe! Do not worry, your card was not charged ;)')
+    user_name = message.successful_payment.order_info.name
+    text = f'Thank you for order, *{user_name}*. This is not a real cafe, so your card was not charged.\nHave a nice day 🙂'
+    bot.send_message(
+        chat_id=message.chat.id,
+        text=text,
+        parse_mode='markdown'
+    )
 
 @bot.pre_checkout_query_handler(func=lambda _: True)
 def handle_pre_checkout_query(pre_checkout_query):
