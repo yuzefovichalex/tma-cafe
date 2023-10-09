@@ -19,7 +19,7 @@ export class CategoryPage extends Route {
         const portionCount = Cart.getPortionCount()
         if (portionCount > 0) {
             TelegramSDK.showMainButton(
-                `GO TO CART (${portionCount})`,
+                `MY CART • ${this.#getDisplayPositionCount(portionCount)}`,
                 () => navigateTo('cart')
             )
         } else {
@@ -58,4 +58,9 @@ export class CategoryPage extends Route {
             }
         )
     }
+
+    #getDisplayPositionCount(positionCount) {
+        return positionCount == 1 ? `${positionCount} POSITION` : `${positionCount} POSITIONS`;
+    }
+
 }
