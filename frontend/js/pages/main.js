@@ -17,7 +17,7 @@ export class MainPage extends Route {
         const portionCount = Cart.getPortionCount()
         if (portionCount > 0) {
             TelegramSDK.showMainButton(
-                `Go to Cart (${portionCount})`,
+                `GO TO CART (${portionCount})`,
                 () => navigateTo('cart')
             )
         } else {
