@@ -5,6 +5,9 @@ import { TelegramSDK } from "../telegram/telegram.js";
 import { replaceShimmerContent } from "../utils/dom.js";
 import { Cart } from "../cart/cart.js";
 
+/**
+ * Page for displaying menu list for selected category.
+ */
 export class CategoryPage extends Route {
     constructor() {
         super('category', '/pages/category.html')

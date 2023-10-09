@@ -5,12 +5,16 @@ import { showSnackbar } from "../routing/router.js";
 import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage } from "../utils/dom.js";
 
+/**
+ * Page for displaying cart items, as well as changing them (quantity).
+ */
 export class CartPage extends Route {
     constructor() {
         super('cart', '/pages/cart.html')
     }
 
     load(params) {
+        // Refresh UI when Cart was updated.
         Cart.onItemsChangeListener = (cartItems) => this.#fillCartItems(cartItems);
         this.#loadCartItems()
     }
@@ -102,6 +106,7 @@ export class CartPage extends Route {
     }
 
     onClose() {
+        // Remove listener to prevent any updates here when page is not visible.
         Cart.onItemsChangeListener = null;
     }
 }

@@ -1,3 +1,6 @@
+/**
+ * Wrapper for simplifying usage of Telegram.WebApp class and it's methods.
+ */
 export class TelegramSDK {
 
     static #mainButtonClickCallback

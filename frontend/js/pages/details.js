@@ -6,6 +6,10 @@ import { Cart } from "../cart/cart.js";
 import { toDisplayCost } from "../utils/currency.js"
 import { Snackbar } from "../utils/snackbar.js";
 
+/**
+ * Page for displaying main item details, as well as selectin variant, quantity
+ * and adding item to the Cart.
+ */
 export class DetailsPage extends Route {
 
     #selectedVariant;

@@ -5,6 +5,9 @@ import { TelegramSDK } from "../telegram/telegram.js";
 import { loadImage, replaceShimmerContent } from "../utils/dom.js";
 import { Cart } from "../cart/cart.js";
 
+/**
+ * Page for displaying main page content, e.g. cafe info, categories, some menu sections.
+ */
 export class MainPage extends Route {
     constructor() {
         super('root', '/pages/main.html')
