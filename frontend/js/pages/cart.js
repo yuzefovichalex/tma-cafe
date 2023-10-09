@@ -67,15 +67,27 @@ export class CartPage extends Route {
         if (cartItems.length > 0) {
             TelegramSDK.showMainButton(
                 'CHECKOUT',
-                () => post('/order', JSON.stringify(cartItems), (result) => {
-                    TelegramSDK.openInvoice(result.invoiceUrl, (status) => {
-                        this.#handleInvoiceStatus(status);
-                    });
-                })
+                () => this.#createOrder(cartItems)
             );
         } else {
             TelegramSDK.hideMainButton();
         }
+    }
+
+    #createOrder(cartItems) {
+        const data = {
+            _auth: TelegramSDK.getInitData(),
+            cartItems: cartItems
+        };
+        post('/order', JSON.stringify(data), (result) => {
+            if (result.ok) {
+                TelegramSDK.openInvoice(result.data.invoiceUrl, (status) => {
+                    this.#handleInvoiceStatus(status);
+                });
+            } else {
+                showSnackbar(result.error, 'error');
+            }
+        });
     }
 
     #handleInvoiceStatus(status) {

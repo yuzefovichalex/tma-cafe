@@ -1,6 +1,6 @@
 import json
 import os
-from . import bot
+from . import auth, bot
 from dotenv import load_dotenv
 from flask import Flask, request
 from flask_cors import CORS
@@ -62,7 +62,15 @@ def menu_item_details(menu_item_id: str):
 
 @app.route('/order', methods=['POST'])
 def create_order():
-    order_items = request.get_json()
+    request_data = request.get_json()
+
+    auth_data = request_data.get('_auth')
+    if auth_data is None or not auth.validate_auth_data(bot.BOT_TOKEN, auth_data):
+        return { 'message': 'Request data should contain auth data.' }, 401
+
+    order_items = request_data.get('cartItems')
+    if order_items is None:
+        return { 'message': 'Cart Items are not provided.' }, 400
 
     labeled_prices = []
     for order_item in order_items:

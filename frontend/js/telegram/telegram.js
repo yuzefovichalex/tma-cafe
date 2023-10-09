@@ -3,6 +3,10 @@ export class TelegramSDK {
     static #mainButtonClickCallback
     static #backButtonClickCallback
 
+    static getInitData() {
+        return Telegram.WebApp.initData || '';
+    }
+
     static showMainButton(text, onClick) {
         // $('#telegram-button').text(text);
         // $('#telegram-button').off('click').on('click', onClick);
