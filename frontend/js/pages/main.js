@@ -48,7 +48,8 @@ export class MainPage extends Route {
     }
     
     #fillCafeInfo(cafeInfo) {
-        loadImage($('#cafe-cover'), cafeInfo.coverImage)
+        loadImage($('#cafe-logo'), cafeInfo.logoImage);
+        loadImage($('#cafe-cover'), cafeInfo.coverImage);
 
         const cafeInfoTemplate = $('#cafe-info-template').html();
         const filledCafeInfoTemplate = $(cafeInfoTemplate);
