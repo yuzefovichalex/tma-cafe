@@ -69,11 +69,12 @@ export class CartPage extends Route {
 
     #updateMainButton(cartItems) {
         if (cartItems.length > 0) {
-            TelegramSDK.showMainButton(
-                'CHECKOUT',
-                () => this.#createOrder(cartItems)
-            );
+            TelegramSDK.showMainButton('CHECKOUT', () => {
+                TelegramSDK.setMainButtonLoading(true);
+                this.#createOrder(cartItems);
+            });
         } else {
+            TelegramSDK.setMainButtonLoading(false);
             TelegramSDK.hideMainButton();
         }
     }
@@ -99,8 +100,10 @@ export class CartPage extends Route {
             Cart.clear();
             TelegramSDK.close();
         } else if (status == 'failed') {
+            TelegramSDK.setMainButtonLoading(false);
             showSnackbar('Something went wrong, payment is unsuccessful :(', 'error');
         } else {
+            TelegramSDK.setMainButtonLoading(false);
             showSnackbar('The order was cancelled.', 'warning');
         }
     }

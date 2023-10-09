@@ -24,6 +24,14 @@ export class TelegramSDK {
         this.#mainButtonClickCallback = onClick;
     }
 
+    static setMainButtonLoading(isLoading) {
+        if (isLoading) {
+            Telegram.WebApp.MainButton.showProgress(false);
+        } else {
+            Telegram.WebApp.MainButton.hideProgress();
+        }
+    }
+
     static hideMainButton() {
         //$('#telegram-button').hide();
         Telegram.WebApp.MainButton.hide();
