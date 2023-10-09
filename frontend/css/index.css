@@ -301,8 +301,22 @@ p.small {
     border-radius: 16px;
 }
 
-.cafe-item-details-name {
+.cafe-item-details-title-container {
     margin: 16px 16px 0 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.cafe-item-details-name {
+    margin-right: 16px;
+    flex-grow: 1;
+}
+
+.cafe-item-details-selected-variant-weight {
+    min-width: 2em;
+    opacity: .72;
 }
 
 .cafe-item-details-description {

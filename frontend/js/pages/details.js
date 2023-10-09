@@ -39,13 +39,13 @@ export class DetailsPage extends Route {
     #fillDetails(menuItem) {
         loadImage($('#cafe-item-details-image'), menuItem.image);
 
-        const name = $('#cafe-item-details-name');
-        name.removeClass('shimmer');
-        name.text(menuItem.name);
+        $('#cafe-item-details-name')
+            .removeClass('shimmer')
+            .text(menuItem.name);
 
-        const description = $('#cafe-item-details-description');
-        description.removeClass('shimmer');
-        description.text(menuItem.description);
+        $('#cafe-item-details-description')
+            .removeClass('shimmer')
+            .text(menuItem.description);
 
         $('#cafe-item-details-section-title').removeClass('shimmer');
 
@@ -84,13 +84,20 @@ export class DetailsPage extends Route {
         }
         $(`#${variant.id}`).addClass('selected');
         this.#selectedVariant = variant;
+        this.#refreshSelectedVariantWeight();
         this.#refreshSelectedVariantPrice();
     }
 
+    #refreshSelectedVariantWeight() {
+        $('#cafe-item-details-selected-variant-weight')
+            .removeClass('shimmer')
+            .text(this.#selectedVariant.weight);
+    }
+
     #refreshSelectedVariantPrice() {
-        const selectedVariantPrice = $('#cafe-item-details-selected-variant-price');
-        selectedVariantPrice.removeClass('shimmer');
-        selectedVariantPrice.text(toDisplayCost(this.#selectedVariant.cost));
+        $('#cafe-item-details-selected-variant-price')
+            .removeClass('shimmer')
+            .text(toDisplayCost(this.#selectedVariant.cost));
     }
 
     #increaseQuantity() {
