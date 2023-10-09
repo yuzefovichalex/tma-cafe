@@ -39,8 +39,8 @@ def process_update(update_json):
     update = Update.de_json(update_json)
     bot.process_new_updates([update])
 
-def create_invoice_link(prices):
-    bot.create_invoice_link(
+def create_invoice_link(prices) -> str:
+    return bot.create_invoice_link(
         title='Order #1',
         description='Great choice! Last steps and we will get to cooking ;)',
         payload='orderID',
