@@ -9,14 +9,28 @@ import { loadImage } from "../utils/dom.js";
  * Page for displaying cart items, as well as changing them (quantity).
  */
 export class CartPage extends Route {
+
+    #emptyCartPlaceholderLottieAnimation
+
     constructor() {
         super('cart', '/pages/cart.html')
     }
 
     load(params) {
+        this.#loadLottie();
         // Refresh UI when Cart was updated.
         Cart.onItemsChangeListener = (cartItems) => this.#fillCartItems(cartItems);
         this.#loadCartItems()
+    }
+
+    #loadLottie() {
+        this.#emptyCartPlaceholderLottieAnimation = lottie.loadAnimation({
+            container: $('#cart-empty-placeholder-icon')[0],
+            renderer: 'svg',
+            loop: true,
+            autoplay: false,
+            path: 'lottie/empty-cart.json'
+        });
     }
 
     #loadCartItems() {
@@ -92,15 +106,10 @@ export class CartPage extends Route {
     #changeEmptyPlaceholderVisibility(isVisible) {
         const placeholder = $('#cart-empty-placeholder');
         if (isVisible) {
-            lottie.loadAnimation({
-                container: $('#cart-empty-placeholder-icon')[0],
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: 'lottie/empty-cart.json'
-            });
+            this.#emptyCartPlaceholderLottieAnimation.play();
             placeholder.fadeIn();
         } else {
+            this.#emptyCartPlaceholderLottieAnimation.stop();
             placeholder.hide();
         }
     }
