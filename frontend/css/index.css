@@ -479,6 +479,29 @@ p.small {
     text-align: center;
 }
 
+.cart-empty-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: -88px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-empty-placeholder h3 {
+    margin-top: -88px;
+    text-align: center;
+}
+
+.cart-empty-placeholder p {
+    margin-top: 4px;
+    text-align: center;
+}
+
 
 
 /* Common (effect, animations, etc.) */

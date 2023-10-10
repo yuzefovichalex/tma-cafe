@@ -26,6 +26,7 @@ export class CartPage extends Route {
 
     #fillCartItems(cartItems) {
         this.#updateMainButton(cartItems);
+        this.#changeEmptyPlaceholderVisibility(cartItems.length == 0);
 
         const cartItemsContainer = $('#cart-items');
         const cartItemsIds = cartItems.map((cartItem) => cartItem.getId());
@@ -80,6 +81,23 @@ export class CartPage extends Route {
         } else {
             TelegramSDK.setMainButtonLoading(false);
             TelegramSDK.hideMainButton();
+        }
+    }
+
+    
+    #changeEmptyPlaceholderVisibility(isVisible) {
+        const placeholder = $('#cart-empty-placeholder');
+        if (isVisible) {
+            lottie.loadAnimation({
+                container: $('#cart-empty-placeholder-icon')[0],
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'lottie/empty-cart.json'
+            });
+            placeholder.fadeIn();
+        } else {
+            placeholder.hide();
         }
     }
 
