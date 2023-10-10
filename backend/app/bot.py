@@ -1,13 +1,16 @@
 import logging
 import os
+import re
 import telebot
 from telebot import TeleBot
-from telebot.types import Update
+from telebot.types import Update, WebAppInfo, Message
+from telebot.util import quick_markup
 
 BOT_TOKEN=os.getenv('BOT_TOKEN')
 PAYMENT_PROVIDER_TOKEN=os.getenv('PAYMENT_PROVIDER_TOKEN')
 WEBHOOK_URL=os.getenv('WEBHOOK_URL')
 WEBHOOK_PATH='/bot'
+APP_URL=os.getenv('APP_URL')
 
 bot = TeleBot(BOT_TOKEN, parse_mode=None)
 
@@ -48,7 +51,7 @@ def handle_successful_payment(message):
         }
     """
     user_name = message.successful_payment.order_info.name
-    text = f'Thank you for order, *{user_name}*. This is not a real cafe, so your card was not charged.\nHave a nice day 🙂'
+    text = f'Thank you for your order, *{user_name}*! This is not a real cafe, so your card was not charged.\n\nHave a nice day 🙂'
     bot.send_message(
         chat_id=message.chat.id,
         text=text,
@@ -65,6 +68,44 @@ def handle_pre_checkout_query(pre_checkout_query):
       doesn't receive answer in 10 seconds, it cancels checkout.
     """
     bot.answer_pre_checkout_query(pre_checkout_query_id=pre_checkout_query.id, ok=True)
+
+@bot.message_handler(func=lambda message: re.match(r'/?start', message.text, re.IGNORECASE) is not None)
+def handle_start_command(message):
+    """Message handler for start messages, including '/start' command. This is an example how to
+      use Regex for handling desired type of message. E.g. this handlers applies '/start', 
+      '/START', 'start', 'START', 'sTaRt' and so on.
+    """
+    send_actionable_message(
+        chat_id=message.chat.id,
+        text='*Welcome to Laurel Cafe!* 🌿\n\nIt is time to order something delicious 😋 Tap the button below to get started.'
+    )
+
+@bot.message_handler()
+def handle_all_messages(message):
+    """Fallback message handler that is invoced if none of above aren't match. This is a good
+      practice to handle all the messages instead of ignoring unknown ones. In our case, we let user
+      know that we can't handle the message and just advice to explore the menu using inline button.
+    """
+    send_actionable_message(
+        chat_id=message.chat.id,
+        text="To be honest, I don't know how to reply to messages. But I can offer you to familiarize yourself with our menu. I am sure you will find something to your liking! 😉"
+    )
+
+def send_actionable_message(chat_id, text):
+    """Method allows to send the text to the chat and attach inline button to it.
+      Inline button will open our Mini App on click.
+    """
+    markup = quick_markup({
+        'Explore Menu': { 
+            'web_app': WebAppInfo(APP_URL)
+        },
+    }, row_width=1)
+    bot.send_message(
+        chat_id=chat_id,
+        text=text,
+        parse_mode='markdown',
+        reply_markup=markup
+    )
 
 def refresh_webhook():
     """Just a wrapper for remove & set webhook ops"""
