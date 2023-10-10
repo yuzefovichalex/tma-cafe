@@ -53,3 +53,16 @@ $.fn.boop = function() {
         this.transition({ scale: 1 }, 75);
     });
 }
+
+/**
+ * Changes the text of target element with 'boop' animation. If current text
+ * equals the new one, the animation won't be started.
+ * @param {*} text Text to set.
+ * @returns jQuery object.
+ */
+$.fn.textBoop = function(text) {
+    if (this.text() != text) {
+        this.text(text).boop();
+    }
+    return this;
+}
