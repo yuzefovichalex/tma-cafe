@@ -1,3 +1,7 @@
+// Set base URL depending on your environment.
+// Don't forget to add it to allowed origins on backend.
+const baseUrl = '';
+
 /**
  * Performs GET request.
  * @param {string} endpoint API endpoint path, e.g. '/info'.
@@ -5,8 +9,7 @@
  */
 export function get(endpoint, onSuccess) {
     $.ajax({
-        //url: 'http://localhost:5000' + endpoint,
-        url: '/api' + endpoint,
+        url: baseUrl + endpoint,
         dataType: "json",
         success: result => onSuccess(result)
     });
@@ -23,8 +26,7 @@ export function get(endpoint, onSuccess) {
 export function post(endpoint, data, onResult) {
     $.ajax({
         type: 'POST',
-        //url: 'http://localhost:5000' + endpoint,
-        url: '/api' + endpoint,
+        url: baseUrl + endpoint,
         data: data,
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
