@@ -41,3 +41,15 @@ $.fn.clickWithRipple = function(callback) {
         }
     });
 }
+
+/**
+ * Runs 'boop' animation on target element. Boop animation is an animation
+ * of scaling to some point and returning back. For example, it may be used
+ * for animating some kind of counters.
+ * @returns jQuery object.
+ */
+$.fn.boop = function() {
+    return this.transition({ scale: 1.05 }, 75, () => {
+        this.transition({ scale: 1 }, 75);
+    });
+}

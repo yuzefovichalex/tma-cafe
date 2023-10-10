@@ -121,7 +121,9 @@ export class DetailsPage extends Route {
     }
 
     #refreshSelectedQuantity() {
-        $('#cafe-item-details-quantity-value').text(this.#selectedQuantity);
+        $('#cafe-item-details-quantity-value')
+            .text(this.#selectedQuantity)
+            .boop();
     }
 
     #showSuccessSnackbar() {

@@ -43,8 +43,12 @@ export class CartPage extends Route {
             const cartItemElement = cartItemsContainer.find(`#${cartItem.getId()}`);
             if (cartItemElement.length > 0) {
                 // We found the existing item, just update the needed params
-                cartItemElement.find('#cart-item-cost').text(cartItem.getDisplayTotalCost());
-                cartItemElement.find('#cart-item-quantity').text(cartItem.quantity);
+                cartItemElement.find('#cart-item-cost')
+                    .text(cartItem.getDisplayTotalCost())
+                    .boop();
+                cartItemElement.find('#cart-item-quantity')
+                    .text(cartItem.quantity)
+                    .boop();
             } else {
                 // This is the newely added item, create new element for it
                 const filledCartItemTemplate = $(cartItemTemplateHtml);
