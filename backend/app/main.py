@@ -18,14 +18,15 @@ app = Flask(__name__)
 # Handle paths like '/info/' and '/info' as the same.
 app.url_map.strict_slashes = False
 
-
+# List of allowed origins. The production 'APP_URL' is added by default,
+# the development `DEV_APP_URL` is added if it and `DEV_MODE` variable is present.
+allowed_origins = [os.getenv('APP_URL')]
 
 if os.getenv('DEV_MODE') is not None:
+    allowed_origins.append(os.getenv('DEV_APP_URL'))
     bot.enable_debug_logging()
-
-    dev_app_url = os.getenv('DEV_APP_URL')
-    if dev_app_url is not None: 
-        CORS(app, origins=[dev_app_url])
+        
+CORS(app, origins=list(filter(lambda o: o is not None, allowed_origins)))
 
 
 
