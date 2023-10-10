@@ -11,7 +11,10 @@ The functionality of the app includes the following features:
 - Customization of the dish (variation, quantity) when adding to cart
 - Viewing and editing items in the cart
 - Order placement and payment using Telegram client
+- Saving order between sessions, so users can continue next time the app open
 - Basic user interaction via messages (order confirmation, launching the application using Inline Button)
+
+![Laurel Cafe Mini App](/screenshots/laurel-cafe-mini-app.png)
 
 ## Before we start
 
