@@ -6,6 +6,7 @@
     --accent-color: var(--tg-theme-button-color, #609F6D);
     --on-accent-color: var(--tg-theme-button-text-color, #FFFFFF);
     --divider-color: #80808025;
+    --ripple-color: #80808040;
     --success-color: #609F6D;
     --warning-color: #FFD775;
     --error-color: #F45B55;
@@ -18,6 +19,7 @@
     --popover-bg-color: var(--tg-theme-bg-color, #242424);
     --text-color: var(--tg-theme-text-color, #FFFFFF);
     --divider-color: #FFFFFF15;
+    --ripple-color: #FFFFFF30;
     --shimmer-color-1: #D0D0D0;
     --shimmer-color-2: #FFFFFF;
 }
@@ -82,6 +84,10 @@ p {
     border-radius: 8px;
 }
 
+button {
+    color: var(--text-color);
+}
+
 p.small {
     font-size: 11px;
 }
@@ -103,8 +109,26 @@ p.small {
 }
 
 .icon-button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background-color: inherit;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+}
+
+.icon-button.small {
+    width: 32px;
+    height: 32px;
     font-size: 20px;
-    opacity: 0.72;
 }
 
 
@@ -346,12 +370,15 @@ p.small {
 
 .cafe-item-details-variant {
     display: inline-block;
+    position: relative;
+    overflow: hidden;
     padding: 8px 16px;
     font-family: 'Rubik', sans-serif;
     font-size: 14px;
+    background-color: var(--bg-color);
     border: 1px solid var(--divider-color);
     border-radius: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s linear;
 }
 
 .cafe-item-details-variant.selected {
@@ -472,6 +499,13 @@ p.small {
     z-index: 3;
     opacity: 0;
     transform: scale(0.24);
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--ripple-color);
+    transform: scale(0);
 }
 
 .shimmer {

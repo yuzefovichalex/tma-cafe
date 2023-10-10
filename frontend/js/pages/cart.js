@@ -54,11 +54,11 @@ export class CartPage extends Route {
                 filledCartItemTemplate.find('#cart-item-description').text(cartItem.variant.name);
                 filledCartItemTemplate.find('#cart-item-cost').text(cartItem.getDisplayTotalCost());
                 filledCartItemTemplate.find('#cart-item-quantity').text(cartItem.quantity);
-                filledCartItemTemplate.find('#cart-item-quantity-increment').on('click', () => {
+                filledCartItemTemplate.find('#cart-item-quantity-increment').clickWithRipple(() => {
                     Cart.increaseQuantity(cartItem, 1);
                     TelegramSDK.impactOccured('light');
                 });
-                filledCartItemTemplate.find('#cart-item-quantity-decrement').on('click', () => {
+                filledCartItemTemplate.find('#cart-item-quantity-decrement').clickWithRipple(() => {
                     Cart.decreaseQuantity(cartItem, 1);
                     TelegramSDK.impactOccured('light');
                 });

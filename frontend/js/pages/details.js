@@ -65,8 +65,8 @@ export class DetailsPage extends Route {
         }
 
         this.#resetQuantity();
-        $('#cafe-item-details-quantity-decrease-button').on('click', () => this.#decreaseQuantity());
-        $('#cafe-item-details-quantity-increase-button').on('click', () => this.#increaseQuantity());
+        $('#cafe-item-details-quantity-decrease-button').clickWithRipple(() => this.#decreaseQuantity());
+        $('#cafe-item-details-quantity-increase-button').clickWithRipple(() => this.#increaseQuantity());
 
         TelegramSDK.showMainButton(
             'ADD TO CART',
@@ -86,6 +86,7 @@ export class DetailsPage extends Route {
         this.#selectedVariant = variant;
         this.#refreshSelectedVariantWeight();
         this.#refreshSelectedVariantPrice();
+        TelegramSDK.impactOccured('light');
     }
 
     #refreshSelectedVariantWeight() {
