@@ -21,8 +21,11 @@ app.url_map.strict_slashes = False
 
 
 if os.getenv('DEV_MODE') is not None:
-    CORS(app, origins=['http://127.0.0.1:5500'])
     bot.enable_debug_logging()
+
+    dev_app_url = os.getenv('DEV_APP_URL')
+    if dev_app_url is not None: 
+        CORS(app, origins=[dev_app_url])
 
 
 
