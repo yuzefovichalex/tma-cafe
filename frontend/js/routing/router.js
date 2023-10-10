@@ -62,7 +62,10 @@ export function navigateTo(dest, params) {
     if (params != null) {
         url += '&params=' + encodeURIComponent(params);
     }
-    window.history.pushState({}, '', url);
+    // Keep URL hash part since it may be filled by Telegram.
+    // This is actual, for example, when running the app
+    // from Inline Button.
+    window.history.pushState({}, '', url + location.hash);
     handleLocation(false);
 };
 
